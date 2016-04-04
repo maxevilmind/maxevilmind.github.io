@@ -4,6 +4,19 @@ body {
 }
 
 
+#filter * {
+	background-color: #222;
+	color: #fff;
+	border: 0px;
+	margin: 10px;
+}
+
+#filter button:hover {
+	background-color: #222;
+	color: #406174;
+	border: 0px;
+	margin: 10px;
+}
 
 #skills .skill {
   width: 25%;
