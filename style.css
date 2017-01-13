@@ -104,11 +104,9 @@ body {
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	min-height: 100%;
-  -webkit-filter: blur(2px);
 }
 #skills .skill:hover img {
 	opacity: 0.5;
 	-webkit-transform: translate3d(0,0,0) scale(1);
 	transform: translate3d(0,0,0) scale(1);
-  -webkit-filter: blur(0px);
 }
