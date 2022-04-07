@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div class='center-container frosted-glass'>
+      <div class='flex-column'>
+        <div class='round-profile-pic'>
+          <img src='/avatar.jpeg' />
+        </div>
+        <a href='http://instagram.com/maxevilmind' class="mt-4 bg-blue-500 hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-transparent hover:border-white rounded">
+          Instagram
         </a>
-      </header>
+        <a href='https://t.me/evilscience' class="mt-4 bg-blue-500 hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-transparent hover:border-white rounded">
+          Telegram Channel
+        </a>
+        <a href='https://open.spotify.com/artist/3mcJ5jST3NUQocI0na1IaX' class="mt-4 bg-blue-500 hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-transparent hover:border-white rounded">
+          Spotify
+        </a>
+        <a href='https://github.com/maxevilmind' class="mt-4 bg-blue-500 hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-transparent hover:border-white rounded">
+          GitHub
+        </a>
+        <a href='https://www.linkedin.com/feed/' class="mt-4 bg-blue-500 hover:bg-blue-500 text-white font-semibold hover:text-white py-2 px-4 border border-transparent hover:border-white rounded">
+          LinkedIn
+        </a>
+      </div>
     </div>
-  );
+  )
 }
-
-export default App;
