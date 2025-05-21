@@ -6,15 +6,18 @@ import { ROUTES, DEFAULT_ROUTE } from '../utils/routes.js';
  * Main application component that handles routing and layout
  * 
  * @property {String} currentPage - The currently active page/route
+ * @property {Boolean} isMenuOpen - Whether the mobile menu is open
  */
 export class PortfolioApp extends LitElement {
   static properties = {
-    currentPage: { type: String }
+    currentPage: { type: String },
+    isMenuOpen: { type: Boolean }
   };
 
   constructor() {
     super();
     this.currentPage = DEFAULT_ROUTE;
+    this.isMenuOpen = false;
     this._setupRouting();
   }
 
@@ -59,6 +62,14 @@ export class PortfolioApp extends LitElement {
     return this;
   }
 
+  _toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  _closeMenu() {
+    this.isMenuOpen = false;
+  }
+
   render() {
     return html`
       <div class="min-h-screen bg-gray-900 text-white flex flex-col">
@@ -66,6 +77,7 @@ export class PortfolioApp extends LitElement {
         <main class="flex-1 p-6 max-w-7xl mx-auto w-full">
           ${this._renderPage()}
         </main>
+        ${this._renderMobileMenu()}
       </div>
     `;
   }
@@ -73,25 +85,76 @@ export class PortfolioApp extends LitElement {
   _renderHeader() {
     return html`
       <header class="bg-gray-800 shadow-md p-4">
-        <nav class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center">
           <h1 class="text-2xl font-bold tracking-tight text-white">Max Larionov</h1>
-          <div class="flex gap-2">
+          
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex gap-2">
             ${this._renderNavButton(ROUTES.HOME, 'Home')}
             ${this._renderNavButton(ROUTES.PROJECTS, 'Projects')}
             ${this._renderNavButton(ROUTES.ABOUT, 'About')}
             ${this._renderNavButton(ROUTES.CONTACT, 'Contact')}
           </div>
+
+          <!-- Mobile Menu Button -->
+          <button 
+            @click=${this._toggleMenu}
+            class="md:hidden p-2 rounded-lg hover:bg-gray-700 focus:outline-none"
+            aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+          </button>
         </nav>
       </header>
     `;
   }
 
-  /**
-   * Render a navigation button with active state handling
-   * @param {String} route - The route this button navigates to
-   * @param {String} label - The button label
-   * @returns {TemplateResult}
-   */
+  _renderMobileMenu() {
+    return html`
+      <!-- Mobile Menu Overlay -->
+      <div 
+        class="fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 md:hidden
+               ${this.isMenuOpen ? 'opacity-100 z-40' : 'opacity-0 pointer-events-none'}"
+        @click=${this._closeMenu}>
+      </div>
+
+      <!-- Mobile Menu Sidebar -->
+      <div 
+        class="fixed top-0 right-0 h-full w-64 bg-gray-800 transform transition-transform duration-300 ease-in-out md:hidden
+               ${this.isMenuOpen ? 'translate-x-0' : 'translate-x-full'} z-50">
+        <div class="p-4">
+          <div class="flex justify-end">
+            <button 
+              @click=${this._closeMenu}
+              class="p-2 rounded-lg hover:bg-gray-700 focus:outline-none"
+              aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M6 18L18 6M6 6l12 12">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex flex-col gap-2 mt-4">
+            ${this._renderMobileNavButton(ROUTES.HOME, 'Home')}
+            ${this._renderMobileNavButton(ROUTES.PROJECTS, 'Projects')}
+            ${this._renderMobileNavButton(ROUTES.ABOUT, 'About')}
+            ${this._renderMobileNavButton(ROUTES.CONTACT, 'Contact')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   _renderNavButton(route, label) {
     const isActive = this.currentPage === route;
     const baseClasses = 'px-4 py-2 text-white rounded transition-colors';
@@ -105,6 +168,25 @@ export class PortfolioApp extends LitElement {
         @click=${() => this._navigateTo(route)}>
         ${label}
       </lion-button>
+    `;
+  }
+
+  _renderMobileNavButton(route, label) {
+    const isActive = this.currentPage === route;
+    const baseClasses = 'w-full px-4 py-3 text-white rounded transition-colors text-left';
+    const bgClasses = isActive 
+      ? 'bg-blue-600 hover:bg-blue-500' 
+      : 'bg-gray-700 hover:bg-gray-600';
+    
+    return html`
+      <button 
+        class="${baseClasses} ${bgClasses}" 
+        @click=${() => {
+          this._navigateTo(route);
+          this._closeMenu();
+        }}>
+        ${label}
+      </button>
     `;
   }
 
