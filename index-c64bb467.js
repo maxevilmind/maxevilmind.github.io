@@ -1,4 +1,4 @@
-import{i as e,x as t}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-d8982caa.js";const a={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact"},r=a.HOME;customElements.define("portfolio-app",class PortfolioApp extends e{static properties={currentPage:{type:String}};constructor(){super(),this.currentPage=r,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const e=window.location.hash.substring(1);e&&Object.values(a).includes(e)?this.currentPage=e:e||""!==window.location.hash||(this.currentPage=r)}_navigateTo(e){window.location.hash=e}createRenderRoot(){return this}render(){return t`
+import{i as e,x as t}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-21be046b.js";const a={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact"},r=a.HOME;customElements.define("portfolio-app",class PortfolioApp extends e{static properties={currentPage:{type:String}};constructor(){super(),this.currentPage=r,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const e=window.location.hash.substring(1);e&&Object.values(a).includes(e)?this.currentPage=e:e||""!==window.location.hash||(this.currentPage=r)}_navigateTo(e){window.location.hash=e}createRenderRoot(){return this}render(){return t`
       <div class="min-h-screen bg-gray-900 text-white flex flex-col">
         ${this._renderHeader()}
         <main class="flex-1 p-6 max-w-7xl mx-auto w-full">
@@ -24,4 +24,4 @@ import{i as e,x as t}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-d89
         ${a}
       </lion-button>
     `}_renderPage(){switch(this.currentPage){case a.HOME:return t`<home-page></home-page>`;case a.PROJECTS:return t`<projects-page></projects-page>`;case a.ABOUT:return t`<about-page></about-page>`;case a.CONTACT:return t`<contact-page></contact-page>`;default:return t`<home-page></home-page>`}}});
-//# sourceMappingURL=index-01017804.js.map
+//# sourceMappingURL=index-c64bb467.js.map
