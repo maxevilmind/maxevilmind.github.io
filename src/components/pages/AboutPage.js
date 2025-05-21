@@ -11,7 +11,7 @@ export class AboutPage extends LitElement {
 
   render() {
     return html`
-      <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-8">
         ${this._renderAboutMe()}
         ${this._renderCurrentRole()}
         ${this._renderTechnicalStack()}

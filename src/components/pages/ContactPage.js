@@ -11,7 +11,7 @@ export class ContactPage extends LitElement {
 
   render() {
     return html`
-      <div class="max-w-4xl mx-auto space-y-8">
+      <div class="space-y-8">
         <custom-card title="Connect With Me" hoverable>
           <div class="space-y-6">
             <p class="text-lg">

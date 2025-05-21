@@ -73,7 +73,7 @@ export class PortfolioApp extends LitElement {
   _renderHeader() {
     return html`
       <header class="bg-gray-800 shadow-md p-4">
-        <nav class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <nav class="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <h1 class="text-2xl font-bold tracking-tight text-white">Max Larionov</h1>
           <div class="flex gap-2">
             ${this._renderNavButton(ROUTES.HOME, 'Home')}

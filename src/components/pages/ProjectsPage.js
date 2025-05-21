@@ -80,7 +80,7 @@ export class ProjectsPage extends LitElement {
       {
         title: 'Open Source Contributions',
         subtitle: 'Community Work',
-        description: 'Active contributor to several open source projects in the JavaScript ecosystem.',
+        description: 'I sometimes contribute to open source projects. You can find my contributions on GitHub.',
         tags: ['Open Source', 'JavaScript', 'Documentation', 'Testing'],
         link: 'https://github.com/maxevilmind'
       }
