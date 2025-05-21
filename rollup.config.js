@@ -1,8 +1,6 @@
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
-import postcss from 'rollup-plugin-postcss';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
+import copy from 'rollup-plugin-copy';
 
 export default {
   input: 'src/index.js',
@@ -12,13 +10,12 @@ export default {
     sourcemap: true
   },
   plugins: [
-    nodeResolve(),
-    postcss({
-      plugins: [
-        tailwindcss,
-        autoprefixer,
-      ],
-    }),
-    terser()
+    resolve(),
+    terser(),
+    copy({
+      targets: [
+        { src: 'index.html', dest: 'dist' }
+      ]
+    })
   ]
 }; 
