@@ -1,44 +1,23 @@
 {
-  "name": "maxevilmind",
-  "homepage": "https://maxevilmind.github.io",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "autoprefixer": "^10.4.4",
-    "gh-pages": "^3.2.3",
-    "postcss": "^8.4.12",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-scripts": "5.0.0",
-    "tailwindcss": "^3.0.23",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "portfolio-web-components",
+  "version": "1.0.0",
+  "description": "Portfolio website built with Lion Web Components",
+  "type": "module",
   "scripts": {
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "web-dev-server --node-resolve --open --watch",
+    "build": "rollup -c",
+    "test": "web-test-runner \"src/**/*.test.js\" --node-resolve"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@lion/ui": "^0.11.5",
+    "lit": "^3.1.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@open-wc/testing": "^3.1.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@web/dev-server": "^0.3.0",
+    "@web/test-runner": "^0.16.0",
+    "rollup": "^2.79.1",
+    "@rollup/plugin-terser": "^0.4.4"
   }
-}
+} 
