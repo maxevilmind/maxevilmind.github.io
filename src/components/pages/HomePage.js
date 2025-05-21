@@ -20,15 +20,15 @@ export class HomePage extends LitElement {
 
   _renderHero() {
     return html`
-      <section class="text-center space-y-4">
-        <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      <section class="space-y-4 py-12">
+        <h1 class="text-5xl font-bold text-white">
           Senior Software Engineer
         </h1>
-        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        <p class="text-xl text-gray-300 max-w-3xl">
           Crafting innovative solutions at ING, specializing in JavaScript development and complex problem-solving. 
           With 7+ years of experience in building scalable applications and mentoring teams.
         </p>
-        <div class="flex justify-center gap-4 mt-6">
+        <div class="flex gap-4 mt-6">
           ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'bg-gray-800 hover:bg-gray-700')}
           ${this._renderSocialButton('https://www.linkedin.com/in/maxevilmind', 'Connect on LinkedIn', 'bg-blue-600 hover:bg-blue-500')}
         </div>
