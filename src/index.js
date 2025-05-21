@@ -1,6 +1,8 @@
 // import './styles/tailwind.css';
-import './components/portfolio-app.js';
-import './components/home-page.js';
-import './components/projects-page.js';
-import './components/about-page.js';
-import './components/contact-page.js'; 
+import './components/PortfolioApp.js';
+
+// Import page components
+import './components/pages/HomePage.js';
+import './components/pages/ProjectsPage.js';
+import './components/pages/AboutPage.js';
+import './components/pages/ContactPage.js'; 

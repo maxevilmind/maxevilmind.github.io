@@ -1,6 +1,16 @@
 import { LitElement, html, css } from 'lit';
 
-class CustomCard extends LitElement {
+/**
+ * A reusable card component with various display options
+ * 
+ * @property {String} title - The card title
+ * @property {String} subtitle - The card subtitle
+ * @property {String} icon - Icon to display (currently as string)
+ * @property {String} variant - Card style variant ('default', 'primary', 'secondary')
+ * @property {Boolean} hoverable - Whether the card has a hover effect
+ * @property {Boolean} clickable - Whether the card appears clickable
+ */
+export class CustomCard extends LitElement {
   static properties = {
     title: { type: String },
     subtitle: { type: String },
