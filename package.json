@@ -15,9 +15,9 @@
   "devDependencies": {
     "@open-wc/testing": "^3.1.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@web/dev-server": "^0.3.0",
     "@web/test-runner": "^0.16.0",
-    "rollup": "^2.79.1",
-    "@rollup/plugin-terser": "^0.4.4"
+    "rollup": "^2.79.1"
   }
-} 
+}

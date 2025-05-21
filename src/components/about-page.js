@@ -1,127 +1,79 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
+import './custom-card.js';
 
 class AboutPage extends LitElement {
-  static styles = [
-    css`
-      :host {
-        display: block;
-      }
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 2rem;
-      }
-      @media (max-width: 768px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .profile-section {
-        text-align: center;
-      }
-      .profile-image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-color: #f3f4f6;
-        margin: 0 auto 1rem;
-      }
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-      .lion-card {
-        background: #fff;
-        border-radius: 1rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .skill-category {
-        margin-bottom: 1rem;
-      }
-      .skill-category h3 {
-        margin-bottom: 0.5rem;
-      }
-      .skill-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .skill-list li {
-        margin-bottom: 0.5rem;
-      }
-    `
-  ];
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
-      <h1>About Me</h1>
-      <div class="about-grid">
-        <div class="profile-section">
-          <div class="profile-image"></div>
-          <h2>John Doe</h2>
-          <p>Full Stack Developer</p>
-          <p>Based in New York, NY</p>
-        </div>
-        <div class="content-section">
-          <div class="lion-card">
-            <h2>Bio</h2>
+      <div class="max-w-4xl mx-auto space-y-8">
+        <custom-card title="About Me" subtitle="Senior Software Engineer at ING" hoverable>
+          <div class="space-y-4">
             <p>
-              I'm a passionate full-stack developer with over 5 years of experience in building
-              modern web applications. I specialize in JavaScript, Web Components, and modern
-              frontend frameworks. My goal is to create beautiful, performant, and accessible
-              web experiences.
+              I'm a Senior Software Engineer with 7+ years of experience in JavaScript development, 
+              currently working at ING in the Amsterdam Area. I specialize in building scalable 
+              applications and solving complex problems.
+            </p>
+            <p>
+              My journey in software development started at the American University of Central Asia, 
+              where I developed a passion for algorithm programming, IoT device development, hardware and many other things.
             </p>
           </div>
-          <div class="skills-grid">
-            <div class="lion-card">
-              <h2>Frontend</h2>
-              <div class="skill-category">
-                <h3>Languages</h3>
-                <ul class="skill-list">
-                  <li>HTML5</li>
-                  <li>CSS3/SASS</li>
-                  <li>JavaScript (ES6+)</li>
-                  <li>TypeScript</li>
-                </ul>
-              </div>
-              <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
-                <ul class="skill-list">
-                  <li>Web Components</li>
-                  <li>React</li>
-                  <li>Vue.js</li>
-                  <li>Lit</li>
-                </ul>
-              </div>
+        </custom-card>
+
+        <custom-card title="Current Role" subtitle="ING - Senior Software Engineer" hoverable>
+          <div class="space-y-4">
+            <p>
+              At ING, I'm contributing to a single-page application platform that serves as the 
+              foundation for various banking services. My role involves:
+            </p>
+            <ul class="list-disc list-inside space-y-2">
+              <li>Cross-team collaboration and technical leadership</li>
+              <li>Mentoring junior developers and sharing knowledge</li>
+              <li>Implementing best practices and architectural decisions</li>
+              <li>Contributing to the platform's growth and evolution</li>
+            </ul>
+          </div>
+        </custom-card>
+
+        <custom-card title="Technical Stack" hoverable>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <h3 class="font-semibold mb-2">Frontend</h3>
+              <ul class="list-disc list-inside space-y-1">
+                <li>JavaScript/TypeScript</li>
+                <li>React</li>
+                <li>Web Components</li>
+                <li>Tailwind CSS</li>
+              </ul>
             </div>
-            <div class="lion-card">
-              <h2>Backend</h2>
-              <div class="skill-category">
-                <h3>Languages & Runtime</h3>
-                <ul class="skill-list">
-                  <li>Node.js</li>
-                  <li>Python</li>
-                  <li>Java</li>
-                </ul>
-              </div>
-              <div class="skill-category">
-                <h3>Databases</h3>
-                <ul class="skill-list">
-                  <li>MongoDB</li>
-                  <li>PostgreSQL</li>
-                  <li>Redis</li>
-                </ul>
-              </div>
+            <div>
+              <h3 class="font-semibold mb-2">Backend</h3>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>MongoDB</li>
+                <li>REST APIs</li>
+              </ul>
             </div>
           </div>
-        </div>
+        </custom-card>
+
+        <custom-card title="Contributions" hoverable>
+          <div class="space-y-4">
+            <p>
+              I'm actively contributing to the open-source community and sharing my knowledge 
+              through various platforms. Check out my contributions on 
+              <a href="https://github.com/maxevilmind" target="_blank" rel="noopener noreferrer" 
+                 class="text-blue-400 hover:text-blue-300">GitHub</a>.
+            </p>
+          </div>
+        </custom-card>
       </div>
     `;
   }
 }
+
 customElements.define('about-page', AboutPage); 

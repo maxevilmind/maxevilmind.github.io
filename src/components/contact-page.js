@@ -1,127 +1,45 @@
-import { LitElement, html, css } from 'lit';
-import { LionForm } from '@lion/ui/form.js';
-import { LionInput } from '@lion/ui/input.js';
-import { LionTextarea } from '@lion/ui/textarea.js';
-import { LionButton } from '@lion/ui/button.js';
+import { LitElement, html } from 'lit';
+import './custom-card.js';
 
 class ContactPage extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-    }
-
-    .contact-container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    lion-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-group label {
-      font-weight: 500;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-      justify-content: center;
-    }
-
-    .social-link {
-      color: #4b5563;
-      text-decoration: none;
-      padding: 0.5rem;
-      border-radius: 0.375rem;
-      transition: background-color 0.2s;
-    }
-
-    .social-link:hover {
-      background-color: #f3f4f6;
-    }
-  `;
+  createRenderRoot() {
+    return this;
+  }
 
   render() {
     return html`
-      <div class="contact-container">
-        <h1>Get in Touch</h1>
-        <p>Have a question or want to work together? Feel free to reach out!</p>
+      <div class="max-w-4xl mx-auto space-y-8">
+        <custom-card title="Connect With Me" hoverable>
+          <div class="space-y-6">
+            <p class="text-lg">
+              Feel free to reach out to me through my professional profiles:
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://github.com/maxevilmind" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="flex items-center gap-3 px-6 py-4 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
 
-        <lion-form @submit=${this._handleSubmit}>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <lion-input
-              name="name"
-              label="Name"
-              .validators=${[
-                { type: 'required', getMessage: () => 'Name is required' }
-              ]}
-            ></lion-input>
+              <a href="https://www.linkedin.com/in/maxevilmind" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="flex items-center gap-3 px-6 py-4 bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
           </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <lion-input
-              name="email"
-              type="email"
-              label="Email"
-              .validators=${[
-                { type: 'required', getMessage: () => 'Email is required' },
-                { type: 'email', getMessage: () => 'Please enter a valid email' }
-              ]}
-            ></lion-input>
-          </div>
-
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <lion-input
-              name="subject"
-              label="Subject"
-              .validators=${[
-                { type: 'required', getMessage: () => 'Subject is required' }
-              ]}
-            ></lion-input>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <lion-textarea
-              name="message"
-              label="Message"
-              .validators=${[
-                { type: 'required', getMessage: () => 'Message is required' }
-              ]}
-            ></lion-textarea>
-          </div>
-
-          <lion-button type="submit">Send Message</lion-button>
-        </lion-form>
-
-        <div class="social-links">
-          <a href="#" class="social-link">GitHub</a>
-          <a href="#" class="social-link">LinkedIn</a>
-          <a href="#" class="social-link">Twitter</a>
-        </div>
+        </custom-card>
       </div>
     `;
-  }
-
-  _handleSubmit(event) {
-    event.preventDefault();
-    const formData = event.target.serializedValue;
-    console.log('Form submitted:', formData);
-    // Here you would typically send the form data to your backend
-    alert('Thank you for your message! I will get back to you soon.');
   }
 }
 

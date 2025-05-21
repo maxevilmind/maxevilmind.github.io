@@ -1,75 +1,59 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { LionButton } from '@lion/ui/button.js';
+import './custom-card.js';
 
 class HomePage extends LitElement {
-  static styles = [
-    css`
-      :host {
-        display: block;
-      }
-      .hero {
-        text-align: center;
-        padding: 4rem 0;
-        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-        color: white;
-        margin: -2rem -1rem 2rem -1rem;
-      }
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-      .hero p {
-        font-size: 1.25rem;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-      .featured {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-      .lion-card {
-        background: #fff;
-        border-radius: 1rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-    `
-  ];
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
-      <div class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <p>I'm a passionate developer creating amazing web experiences</p>
-      </div>
-      <div class="featured">
-        <div class="lion-card">
-          <h2>Latest Projects</h2>
-          <p>Check out my most recent work and side projects.</p>
-          <lion-button @click=${() => this.dispatchEvent(new CustomEvent('navigate', { detail: 'projects' }))}>
-            View Projects
-          </lion-button>
-        </div>
-        <div class="lion-card">
-          <h2>About Me</h2>
-          <p>Learn more about my background and expertise.</p>
-          <lion-button @click=${() => this.dispatchEvent(new CustomEvent('navigate', { detail: 'about' }))}>
-            Read More
-          </lion-button>
-        </div>
-        <div class="lion-card">
-          <h2>Get in Touch</h2>
-          <p>Interested in working together? Let's connect!</p>
-          <lion-button @click=${() => this.dispatchEvent(new CustomEvent('navigate', { detail: 'contact' }))}>
-            Contact Me
-          </lion-button>
-        </div>
+      <div class="space-y-8">
+        <section class="text-center space-y-4">
+          <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Senior Software Engineer
+          </h1>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Crafting innovative solutions at ING, specializing in JavaScript development and complex problem-solving. 
+            With 7+ years of experience in building scalable applications and mentoring teams.
+          </p>
+          <div class="flex justify-center gap-4 mt-6">
+            <a href="https://github.com/maxevilmind" target="_blank" rel="noopener noreferrer" 
+               class="px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+              View GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/maxevilmind" target="_blank" rel="noopener noreferrer"
+               class="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors">
+              Connect on LinkedIn
+            </a>
+          </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+          <custom-card title="Expertise" hoverable>
+            <ul class="space-y-2">
+              <li>• JavaScript/TypeScript Development</li>
+              <li>• Single Page Applications</li>
+              <li>• Cross-team Collaboration</li>
+              <li>• Technical Mentoring</li>
+              <li>• Complex Problem Solving</li>
+            </ul>
+          </custom-card>
+
+          <custom-card title="Current Focus" hoverable>
+            <ul class="space-y-2">
+              <li>• Building SPA Platform at ING</li>
+              <li>• Building and maintaining UI components library at ING</li>
+              <li>• Leadership</li>
+              <li>• Open Source Contributions at Home and ING</li>
+              <li>• IoT Device Development at Home</li>
+            </ul>
+          </custom-card>
+        </section>
       </div>
     `;
   }
 }
+
 customElements.define('home-page', HomePage); 

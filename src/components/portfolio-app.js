@@ -1,41 +1,7 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import { LionButton } from '@lion/ui/button.js';
 
 class PortfolioApp extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    header {
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1rem 0;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    main {
-      padding: 2rem 0;
-    }
-  `;
-
   static properties = {
     currentPage: { type: String }
   };
@@ -45,22 +11,26 @@ class PortfolioApp extends LitElement {
     this.currentPage = 'home';
   }
 
+  // Remove shadow DOM to allow Tailwind styles to apply
+  createRenderRoot() {
+    return this;
+  }
+
   render() {
     return html`
-      <div class="container">
-        <header>
-          <nav>
-            <h1>My Portfolio</h1>
-            <div class="nav-links">
-              <lion-button @click=${() => this.currentPage = 'home'}>Home</lion-button>
-              <lion-button @click=${() => this.currentPage = 'projects'}>Projects</lion-button>
-              <lion-button @click=${() => this.currentPage = 'about'}>About</lion-button>
-              <lion-button @click=${() => this.currentPage = 'contact'}>Contact</lion-button>
+      <div class="min-h-screen bg-gray-900 text-white flex flex-col">
+        <header class="bg-gray-800 shadow-md p-4">
+          <nav class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tight text-white">Max Larionov</h1>
+            <div class="flex gap-2">
+              <lion-button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded" @click=${() => this.currentPage = 'home'}>Home</lion-button>
+              <lion-button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded" @click=${() => this.currentPage = 'projects'}>Projects</lion-button>
+              <lion-button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded" @click=${() => this.currentPage = 'about'}>About</lion-button>
+              <lion-button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded" @click=${() => this.currentPage = 'contact'}>Contact</lion-button>
             </div>
           </nav>
         </header>
-
-        <main>
+        <main class="flex-1 p-6 max-w-7xl mx-auto w-full">
           ${this._renderPage()}
         </main>
       </div>
