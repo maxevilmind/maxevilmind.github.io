@@ -1,4 +1,4 @@
-import{i as e,x as t}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-b64acac1.js";const n={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact"},o=n.HOME;class PortfolioApp extends e{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean}};constructor(){super(),this.currentPage=o,this.isMenuOpen=!1,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const e=window.location.hash.substring(1);e&&Object.values(n).includes(e)?this.currentPage=e:e||""!==window.location.hash||(this.currentPage=o)}_navigateTo(e){window.location.hash=e}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return t`
+import{i as e,x as t}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-be93d6ef.js";const n={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact"},o=n.HOME;class PortfolioApp extends e{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean}};constructor(){super(),this.currentPage=o,this.isMenuOpen=!1,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const e=window.location.hash.substring(1);e&&Object.values(n).includes(e)?this.currentPage=e:e||""!==window.location.hash||(this.currentPage=o)}_navigateTo(e){window.location.hash=e}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return t`
       <div class="min-h-screen bg-gray-900 text-white flex flex-col">
         ${this._renderHeader()}
         <main class="flex-1 p-6 max-w-7xl mx-auto w-full">
@@ -84,4 +84,4 @@ import{i as e,x as t}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-b64
         ${n}
       </button>
     `}_renderPage(){switch(this.currentPage){case n.HOME:return t`<home-page></home-page>`;case n.PROJECTS:return t`<projects-page></projects-page>`;case n.ABOUT:return t`<about-page></about-page>`;case n.CONTACT:return t`<contact-page></contact-page>`;default:return t`<home-page></home-page>`}}}customElements.define("portfolio-app",PortfolioApp);
-//# sourceMappingURL=index-0f10c753.js.map
+//# sourceMappingURL=index-a525751e.js.map
