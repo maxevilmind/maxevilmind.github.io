@@ -57,23 +57,23 @@ export class ProjectsPage extends LitElement {
   get projects() {
     return [
       {
-        title: 'ING Web Components Library',
+        title: 'Web Components',
         subtitle: 'Enterprise Component System',
-        description: 'Led the development of a company-wide web components library used across multiple applications at ING.',
+        description: 'Contributed and maintained a number of components to the company-wide web components library used across multiple applications at ING.',
         tags: ['Web Components', 'TypeScript', 'Storybook', 'CI/CD'],
         link: null
       },
       {
         title: 'SPA Platform',
         subtitle: 'Enterprise Application Framework',
-        description: 'Designed and implemented a platform for building single-page applications with standardized architecture and tools.',
+        description: 'Contributed to the design of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.',
         tags: ['JavaScript', 'Architecture', 'Authentication', 'Performance'],
         link: null
       },
       {
         title: 'Home IoT System',
         subtitle: 'Personal Project',
-        description: 'Created a home automation system using Raspberry Pi, custom sensors, and a web dashboard.',
+        description: 'Created a home automation system using Raspberry Pi, custom sensors, and a web dashboard. Contributed to the development of the open-source integrations. This gave me some experience with hardware and low-level programming. Including esp32 and arduino.',
         tags: ['IoT', 'Node.js', 'MQTT', 'React'],
         link: 'https://github.com/maxevilmind/home-iot'
       },
