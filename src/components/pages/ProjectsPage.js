@@ -59,14 +59,14 @@ export class ProjectsPage extends LitElement {
       {
         title: 'Web Components',
         subtitle: 'Enterprise Component System',
-        description: 'Contributed and maintained a number of components to the company-wide web components library used across multiple applications at ING.',
+        description: 'Maintaining a library of web components used across multiple applications at ING. Contributed to the development of the library, documentation, testing, design decisions, and more.',
         tags: ['Web Components', 'TypeScript', 'Storybook', 'CI/CD'],
         link: null
       },
       {
         title: 'SPA Platform',
         subtitle: 'Enterprise Application Framework',
-        description: 'Contributed to the design of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.',
+        description: 'Contributed to the development of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.',
         tags: ['JavaScript', 'Architecture', 'Authentication', 'Performance'],
         link: null
       },
