@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import html from '@rollup/plugin-html';
+import copy from 'rollup-plugin-copy';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
@@ -38,6 +39,11 @@ export default {
     minifyInternalExports: true
   },
   plugins: [
+    copy({
+      targets: [
+        { src: 'assets/*', dest: 'dist/assets' }
+      ]
+    }),
     resolve(),
     terser({
       compress: {
