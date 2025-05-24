@@ -32,6 +32,9 @@ export class ProjectsPage extends LitElement {
         hoverable 
         clickable>
         <div class="space-y-4">
+          ${project.image ? html`
+            <img src="${project.image}" alt="${project.title}" class="w-full rounded-lg shadow-lg" />
+          ` : ''}
           <p>${project.description}</p>
           <div class="flex flex-wrap gap-2">
             ${project.tags.map(tag => html`
@@ -65,7 +68,7 @@ export class ProjectsPage extends LitElement {
       },
       {
         title: 'SPA Platform',
-        subtitle: 'Enterprise Application Framework',
+        subtitle: 'Enterprise Application',
         description: 'Contributed to the development of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.',
         tags: ['JavaScript', 'Architecture', 'Authentication', 'Performance'],
         link: null
@@ -73,14 +76,22 @@ export class ProjectsPage extends LitElement {
       {
         title: 'Home IoT System',
         subtitle: 'Personal Project',
-        description: 'Created a home automation system using Raspberry Pi, custom sensors, and a web dashboard. Contributed to the development of the open-source integrations. This gave me some experience with hardware and low-level programming. Including esp32 and arduino.',
+        description: 'Created a home automation system using Raspberry Pi, custom sensors, and a web dashboard. Contributed to the development of the open-source integrations. This gave me some experience with hardware and low-level programming. Including esp32 and arduino. Most of the boring routines at my home are automated to a point where I don\'t even need to think about them. This leaves me with some time to code, play guitar, spend time with my gf and play games, and run. And cycle. And cook. And all the other hobbies.',
         tags: ['IoT', 'Node.js', 'MQTT', 'React'],
         link: 'https://github.com/maxevilmind/home-iot'
       },
       {
         title: 'Open Source Contributions',
         subtitle: 'Community Work',
-        description: 'I sometimes contribute to open source projects. You can find my contributions on GitHub.',
+        description: 'I sometimes contribute to open source projects. You can find my contributions on GitHub. It\'s not much, but it\'s something.',
+        tags: ['Open Source', 'JavaScript', 'Documentation', 'Testing'],
+        link: 'https://github.com/maxevilmind'
+      },
+      {
+        title: 'This Portfolio',
+        subtitle: 'Fun Project',
+        image: '/assets/stats.png',
+        description: 'This portfolio is a fun project that I do to showcase my work and share my thoughts. It is blazing fast thanks to web components and lion components (opensource components library that I contributed to a just little bit as well). It weights next to nothing, loads in 140ms, and is fully responsive. It is also fully open source, so you can see the code and even host your own copy!',
         tags: ['Open Source', 'JavaScript', 'Documentation', 'Testing'],
         link: 'https://github.com/maxevilmind'
       }
