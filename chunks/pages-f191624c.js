@@ -150,15 +150,20 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
     `}_renderHero(){return r`
       <section class="page-stack" style="padding-block: var(--space-12); gap: var(--space-4);">
         <h1 class="hero-title">
-          Senior Software Engineer
+          Hello, I'm Max!
         </h1>
         <p class="hero-text" style="font-size:1.125rem;">
-          Crafting innovative solutions at ING, specializing in JavaScript development and complex problem-solving. 
-          With 7+ years of experience in building scalable applications and mentoring teams.
+          I'm an engineer with a huge interest in hardware and software development.
+          I work as a web developer and in my free time I build different hobby projects: smart home, IoT devices, build with esp32, arduino, raspberry pi, etc.
+          Exploring local AI models for image and code generation. Experimenting with LORA based communication systems.
+        </p>
+        <p class="hero-text" style="font-size:1.125rem;">
+          At work I am crafting innovative solutions at ING, specializing in JavaScript development and complex problem-solving. 
+          With 8+ years of experience in building scalable applications and mentoring teams.
         </p>
         <div class="button-row">
           ${this._renderSocialButton("https://github.com/maxevilmind","View GitHub","secondary")}
-          ${this._renderSocialButton("https://www.linkedin.com/in/maxevilmind","Connect on LinkedIn","primary")}
+          ${this._renderSocialButton("https://www.linkedin.com/in/larionov-m/","Connect on LinkedIn","primary")}
         </div>
       </section>
     `}_renderSocialButton(e,t,o){return r`
@@ -227,7 +232,7 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
           `:""}
         </div>
       </custom-card>
-    `))}get projects(){return[{title:"Web Components",subtitle:"Enterprise Component System",description:"Maintaining a library of web components used across multiple applications at ING. Contributed to the development of the library, documentation, testing, design decisions, and more.",tags:["Web Components","TypeScript","Storybook","CI/CD"],link:null},{title:"SPA Platform",subtitle:"Enterprise Application",description:"Contributed to the development of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.",tags:["JavaScript","Architecture","Authentication","Performance"],link:null},{title:"Home IoT System",subtitle:"Personal Project",description:"Created a home automation system using Raspberry Pi, custom sensors, and a web dashboard. Contributed to the development of the open-source integrations. This gave me some experience with hardware and low-level programming. Including esp32 and arduino. Most of the boring routines at my home are automated to a point where I don't even need to think about them. This leaves me with some time to code, play guitar, spend time with my gf and play games, and run. And cycle. And cook. And all the other hobbies.",tags:["IoT","Node.js","MQTT","React"],link:"https://github.com/maxevilmind/home-iot"},{title:"Open Source Contributions",subtitle:"Community Work",description:"I sometimes contribute to open source projects. You can find my contributions on GitHub. It's not much, but it's something.",tags:["Open Source","JavaScript","Documentation","Testing"],link:"https://github.com/maxevilmind"},{title:"This Portfolio",subtitle:"Fun Project",image:"/assets/stats.png",description:"This portfolio is a fun project that I do to showcase my work and share my thoughts. It is blazing fast thanks to web components and lion components (opensource components library that I contributed to a just little bit as well). It weights next to nothing, loads in 140ms, and is fully responsive. It is also fully open source, so you can see the code and even host your own copy!",tags:["Open Source","JavaScript","Documentation","Testing"],link:"https://github.com/maxevilmind"}]}});customElements.define("about-page",class AboutPage extends e{createRenderRoot(){return this}render(){return r`
+    `))}get projects(){return[{title:"Web Components",subtitle:"Enterprise Component System",description:"Maintaining a library of web components used across multiple applications at ING. Contributed to the development of the library, documentation, testing, design decisions, and more.",tags:["Web Components","TypeScript","Storybook","CI/CD"],link:null},{title:"SPA Platform",subtitle:"Enterprise Applications",description:"Contributed to the development of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.",tags:["JavaScript","Architecture","Authentication","Performance"],link:null},{title:"Home IoT System",subtitle:"Personal Project",description:"Created a home automation system using Raspberry Pi, custom sensors, and a web dashboard. Contributed to the development of the open-source integrations. This gave me some experience with hardware and low-level programming. Including esp32 and arduino. Most of the boring routines at my home are automated to a point where I don't even need to think about them. This leaves me with some time to code, play guitar, spend time with my gf and play games, and run. And cycle. And cook. And all the other hobbies.",tags:["IoT","Node.js","MQTT","React"],link:"https://github.com/maxevilmind/home-iot"},{title:"Open Source Contributions",subtitle:"Community Work",description:"I sometimes contribute to open source projects. You can find my contributions on GitHub. It's not much, but it's something.",tags:["Open Source","JavaScript","Documentation","Testing"],link:"https://github.com/maxevilmind"},{title:"This Portfolio",subtitle:"Fun Project",image:"/assets/stats.png",description:"This portfolio is a fun project that I do to showcase my work and share my thoughts. It is blazing fast thanks to web components and lion components (opensource components library that I contributed to a just little bit as well). It weights next to nothing, loads in 140ms, and is fully responsive. It is also fully open source, so you can see the code and even host your own copy!",tags:["Open Source","JavaScript","Documentation","Testing"],link:"https://github.com/maxevilmind"}]}});customElements.define("about-page",class AboutPage extends e{createRenderRoot(){return this}render(){return r`
       <div class="page-stack">
         ${this._renderAboutMe()}
         ${this._renderCurrentRole()}
@@ -308,7 +313,7 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
             <div class="social-links">
               ${this._renderSocialLink("https://github.com/maxevilmind","GitHub","secondary",this._getGitHubIcon())}
               
-              ${this._renderSocialLink("https://www.linkedin.com/in/maxevilmind","LinkedIn","primary",this._getLinkedInIcon())}
+              ${this._renderSocialLink("https://www.linkedin.com/in/larionov-m/","LinkedIn","primary",this._getLinkedInIcon())}
             </div>
           </div>
         </custom-card>
@@ -327,4 +332,4 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
       </svg>
     `}});
-//# sourceMappingURL=pages-24fc057c.js.map
+//# sourceMappingURL=pages-f191624c.js.map

@@ -1,4 +1,4 @@
-import{i as t,x as e,a as s}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-24fc057c.js";const o={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact",BLOG:"blog"},i=o.HOME;class PortfolioApp extends t{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean}};constructor(){super(),this.currentPage=i,this.isMenuOpen=!1,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const t=window.location.hash.substring(1);t&&Object.values(o).includes(t)||t.startsWith(`${o.BLOG}/`)?this.currentPage=t:t||""!==window.location.hash||(this.currentPage=i)}_navigateTo(t){window.location.hash=t}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return e`
+import{i as t,x as e,a as s}from"./chunks/vendor-6907c12a.js";import"./chunks/pages-f191624c.js";const o={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact",BLOG:"blog"},i=o.HOME;class PortfolioApp extends t{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean}};constructor(){super(),this.currentPage=i,this.isMenuOpen=!1,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const t=window.location.hash.substring(1);t&&Object.values(o).includes(t)||t.startsWith(`${o.BLOG}/`)?this.currentPage=t:t||""!==window.location.hash||(this.currentPage=i)}_navigateTo(t){window.location.hash=t}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return e`
       <div class="app-shell">
         ${this._renderHeader()}
         <main class="page-main container">
@@ -139,10 +139,10 @@ import{i as t,x as e,a as s}from"./chunks/vendor-6907c12a.js";import"./chunks/pa
     }
   `;constructor(){super(),this.post=null}render(){if(!this.post)return"";const t=`#blog/${this.post.slug}`,s=function toPreviewText(t,e=180){const s=t.excerpt||(t.content?.join(" ")??"");return s.length<=e?s:`${s.slice(0,e).trimEnd()}...`}(this.post);return e`
       <article class="card">
-        ${this.post.image?e`<img class="image" src="${this.post.image}" alt="${this.post.title}" loading="lazy" />`:""}
         <div class="content">
-          <div class="meta"><p class="date">${this.post.date}</p></div>
           <h2 class="title">${this.post.title}</h2>
+          <div class="meta"><p class="date">${this.post.date}</p></div>
+          ${this.post.image?e`<img class="image" src="${this.post.image}" alt="${this.post.title}" loading="lazy" />`:""}
           <p class="preview">${s}</p>
           <div>
             <app-button href="${t}" variant="primary">Read full article</app-button>
@@ -182,4 +182,4 @@ import{i as t,x as e,a as s}from"./chunks/vendor-6907c12a.js";import"./chunks/pa
         </div>
       </article>
     `}}customElements.define("blog-post-page",BlogPostPage);
-//# sourceMappingURL=index-5ae3fdd6.js.map
+//# sourceMappingURL=index-84339b65.js.map

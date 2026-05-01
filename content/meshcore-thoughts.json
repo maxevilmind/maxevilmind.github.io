@@ -1,0 +1,30 @@
+{
+  "slug": "meshcore-thoughts",
+  "title": "MeshCore vs Meshtastic: Why I Am Staying with Meshtastic",
+  "date": "2026-03-28",
+  "content": [
+    "Over the last few months, I have been testing two popular LoRa-based decentralized communication systems: Meshtastic and MeshCore.",
+    "I carried a node around the city, tested indoors and outdoors, and set up a home station with a large balcony antenna. I also joined both communities to understand what would actually be useful in day-to-day life.",
+    "My goal was simple: practical communication with friends and a usable emergency backup channel.",
+    "After testing both systems, I am staying with Meshtastic.",
+    "Meshtastic worked better than I first realized. Messages went through from my apartment, elevator, streets, and other places where I expected weak signal.",
+    "My initial frustration with Meshtastic was not technical. Public channels were often quiet, and that can make a healthy network feel dead to newcomers.",
+    "Then I tried MeshCore. In the Netherlands, it felt alive immediately. I started receiving messages right away and saw much more active conversation.",
+    "That excitement faded once I used it in normal conditions. The practical problem was infrastructure dependence.",
+    "With Meshtastic, each node can help relay messages. With MeshCore, your experience depends more on dedicated infrastructure.",
+    "In theory that can be fine, but in practice it changes everything. Infrastructure must be built and maintained by enthusiasts, and reliability varies.",
+    "At home, with a big antenna, MeshCore worked. Near repeaters, it could also work. Walking around with a small pocket node was much less reliable.",
+    "If the device stayed in a bag or pocket, many outgoing messages failed. To improve odds, I often had to hold it high in the air, which is not practical.",
+    "In real use, transmission reliability was not good enough for my needs.",
+    "Meshtastic was less dramatic. I flashed, configured, and used it. No constant dependence on nearby repeater infrastructure.",
+    "I could keep the node indoors or carry it around and still get reasonable delivery rates without special handling.",
+    "Another concern is social dynamics. Infrastructure-heavy networks give more influence to the people running core repeaters.",
+    "That naturally introduces coordination politics around settings, channels, and regional decisions. Some governance is necessary, but this shifts the balance.",
+    "For my use case, I want a system where personal nodes remain useful without depending on local infrastructure maintainers.",
+    "To be fair, MeshCore's approach has valid technical arguments around structure and potential scalability, especially in dense environments.",
+    "But for me, a theoretically better architecture is not enough if a pocket node cannot reliably send while moving through the city.",
+    "My conclusion is simple: MeshCore felt more alive, Meshtastic felt more usable, and usability wins for my goals.",
+    "Meshtastic is not perfect. It can be quiet and may face congestion at scale. Still, its node-first model matches what decentralized communication should feel like.",
+    "You turn on a node, and it becomes part of the network."
+  ]
+}
