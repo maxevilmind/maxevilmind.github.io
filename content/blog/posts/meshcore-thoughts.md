@@ -2,9 +2,8 @@
 title: MeshCore vs Meshtastic: Why I Am Staying with Meshtastic
 date: 2026-03-28
 excerpt: My experience comparing MeshCore and Meshtastic in real-world city use, home setup, and emergency-style communication scenarios.
+image: assets/mcvsmt.png
 ---
-
-# MeshCore vs Meshtastic: why I am staying with Meshtastic
 
 Over the last few months, I have been playing with two popular LoRa-based decentralized communication systems: Meshtastic and MeshCore.
 
