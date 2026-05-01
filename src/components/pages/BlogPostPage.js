@@ -1,4 +1,7 @@
 import { LitElement, html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 import { getBlogPost } from '../../utils/blog.js';
 import '../ui/AppButton.js';
 
@@ -17,6 +20,7 @@ export class BlogPostPage extends LitElement {
     this.isLoading = true;
     this.errorMessage = '';
     this._lastLoadedSlug = '';
+    this._renderedMarkdown = '';
   }
 
   createRenderRoot() {
@@ -44,9 +48,12 @@ export class BlogPostPage extends LitElement {
 
     try {
       this.post = await getBlogPost(this.slug);
+      const renderedHtml = marked.parse(this.post.markdown || '');
+      this._renderedMarkdown = DOMPurify.sanitize(renderedHtml);
       this._lastLoadedSlug = this.slug;
     } catch (error) {
       this.post = null;
+      this._renderedMarkdown = '';
       this.errorMessage = 'Could not load this blog post.';
     } finally {
       this.isLoading = false;
@@ -77,9 +84,7 @@ export class BlogPostPage extends LitElement {
           <h1 class="hero-title">${this.post.title}</h1>
         </header>
         ${this.post.image ? html`<img class="article-image" src="${this.post.image}" alt="${this.post.title}" />` : ''}
-        <div class="article-content page-stack" style="gap: var(--space-4);">
-          ${this.post.content.map(paragraph => html`<p>${paragraph}</p>`) }
-        </div>
+        <div class="article-content">${unsafeHTML(this._renderedMarkdown)}</div>
       </article>
     `;
   }

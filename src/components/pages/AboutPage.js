@@ -25,7 +25,7 @@ export class AboutPage extends LitElement {
       <custom-card title="About Me" subtitle="Senior Software Engineer at ING" hoverable>
         <div class="page-stack" style="gap: var(--space-4);">
           <p>
-            I'm a Senior Software Engineer with 7+ years of experience in JavaScript development, 
+            I'm a Senior Software Engineer with 8+ years of experience in JavaScript development, 
             currently working at ING in the Amsterdam Area. I specialize in building scalable 
             applications and solving complex problems.
           </p>

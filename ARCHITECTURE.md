@@ -17,6 +17,7 @@ This project is intentionally simple: reusable components, centralized styling, 
 - `src/utils/`: Shared constants and utilities (`routes.js`).
 - `styles/main.css`: Global CSS, design tokens, layout helpers, and shared classes.
 - `assets/`: Static media files.
+- `content/blog/posts/`: Blog source content in Markdown with front matter.
 
 When adding code, prefer this rule:
 
