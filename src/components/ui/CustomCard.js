@@ -26,15 +26,16 @@ export class CustomCard extends LitElement {
     }
 
     .card {
-      background-color: rgb(31, 41, 55); /* bg-gray-800 */
-      border-radius: 0.5rem;
-      padding: 1.5rem;
+      background: var(--color-surface, #152238);
+      border: 1px solid var(--color-border, #2b3f60);
+      border-radius: var(--radius-md, 12px);
+      padding: var(--space-6, 24px);
       transition: all 0.2s ease-in-out;
     }
 
     .card.hoverable:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow-md, 0 8px 24px rgba(7, 10, 18, 0.25));
     }
 
     .card.clickable {
@@ -42,11 +43,12 @@ export class CustomCard extends LitElement {
     }
 
     .card.primary {
-      background-color: rgb(37, 99, 235); /* bg-blue-600 */
+      background: var(--color-primary, #2d7ff9);
+      border-color: transparent;
     }
 
     .card.secondary {
-      background-color: rgb(79, 70, 229); /* bg-indigo-600 */
+      background: var(--color-bg-muted, #1b2940);
     }
 
     .card-header {
@@ -63,24 +65,24 @@ export class CustomCard extends LitElement {
     }
 
     .card-title {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      color: white;
+      color: var(--color-text, #eff5ff);
       margin: 0;
     }
 
     .card-subtitle {
       font-size: 1rem;
-      color: rgb(209, 213, 219); /* text-gray-300 */
+      color: var(--color-text-muted, #b9c7dd);
       margin-top: 0.25rem;
     }
 
     .card-content {
-      color: rgb(209, 213, 219); /* text-gray-300 */
+      color: var(--color-text-muted, #b9c7dd);
     }
 
     ::slotted(*) {
-      color: rgb(209, 213, 219); /* text-gray-300 */
+      color: var(--color-text-muted, #b9c7dd);
     }
   `;
 

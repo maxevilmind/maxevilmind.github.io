@@ -11,7 +11,7 @@ export class AboutPage extends LitElement {
 
   render() {
     return html`
-      <div class="space-y-8">
+      <div class="page-stack">
         ${this._renderAboutMe()}
         ${this._renderCurrentRole()}
         ${this._renderTechnicalStack()}
@@ -23,7 +23,7 @@ export class AboutPage extends LitElement {
   _renderAboutMe() {
     return html`
       <custom-card title="About Me" subtitle="Senior Software Engineer at ING" hoverable>
-        <div class="space-y-4">
+        <div class="page-stack" style="gap: var(--space-4);">
           <p>
             I'm a Senior Software Engineer with 7+ years of experience in JavaScript development, 
             currently working at ING in the Amsterdam Area. I specialize in building scalable 
@@ -41,12 +41,12 @@ export class AboutPage extends LitElement {
   _renderCurrentRole() {
     return html`
       <custom-card title="Current Role" subtitle="ING - Senior Software Engineer" hoverable>
-        <div class="space-y-4">
+        <div class="page-stack" style="gap: var(--space-4);">
           <p>
             At ING, I'm contributing to a single-page application platform that serves as the 
             foundation for various banking services. My role involves:
           </p>
-          <ul class="list-disc list-inside space-y-2">
+          <ul class="list">
             <li>Cross-team collaboration and technical leadership</li>
             <li>Mentoring junior developers and sharing knowledge</li>
             <li>Implementing best practices and architectural decisions</li>
@@ -60,10 +60,10 @@ export class AboutPage extends LitElement {
   _renderTechnicalStack() {
     return html`
       <custom-card title="Technical Stack" hoverable>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-2">
           <div>
-            <h3 class="font-semibold mb-2">Frontend</h3>
-            <ul class="list-disc list-inside space-y-1">
+            <h3 style="margin-bottom: var(--space-2);">Frontend</h3>
+            <ul class="list">
               <li>JavaScript/TypeScript</li>
               <li>React</li>
               <li>Web Components</li>
@@ -71,8 +71,8 @@ export class AboutPage extends LitElement {
             </ul>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">Backend</h3>
-            <ul class="list-disc list-inside space-y-1">
+            <h3 style="margin-bottom: var(--space-2);">Backend</h3>
+            <ul class="list">
               <li>Node.js</li>
               <li>Express</li>
               <li>MongoDB</li>
@@ -87,12 +87,12 @@ export class AboutPage extends LitElement {
   _renderContributions() {
     return html`
       <custom-card title="Contributions" hoverable>
-        <div class="space-y-4">
+        <div class="page-stack" style="gap: var(--space-4);">
           <p>
             I'm actively contributing to the open-source community and sharing my knowledge 
             through various platforms. Check out my contributions on 
             <a href="https://github.com/maxevilmind" target="_blank" rel="noopener noreferrer" 
-               class="text-blue-400 hover:text-blue-300">GitHub</a>.
+               class="link-inline">GitHub</a>.
           </p>
         </div>
       </custom-card>

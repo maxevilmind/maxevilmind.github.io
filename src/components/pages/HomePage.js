@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import '../ui/CustomCard.js';
+import '../ui/AppButton.js';
 
 /**
  * Home page component displaying introductory information
@@ -11,7 +12,7 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <div class="space-y-8">
+      <div class="page-stack">
         ${this._renderHero()}
         ${this._renderFeatureCards()}
       </div>
@@ -20,36 +21,35 @@ export class HomePage extends LitElement {
 
   _renderHero() {
     return html`
-      <section class="space-y-4 py-12">
-        <h1 class="text-5xl font-bold text-white">
+      <section class="page-stack" style="padding-block: var(--space-12); gap: var(--space-4);">
+        <h1 class="hero-title">
           Senior Software Engineer
         </h1>
-        <p class="text-xl text-gray-300 max-w-3xl">
+        <p class="hero-text" style="font-size:1.125rem;">
           Crafting innovative solutions at ING, specializing in JavaScript development and complex problem-solving. 
           With 7+ years of experience in building scalable applications and mentoring teams.
         </p>
-        <div class="flex gap-4 mt-6">
-          ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'bg-gray-800 hover:bg-gray-700')}
-          ${this._renderSocialButton('https://www.linkedin.com/in/maxevilmind', 'Connect on LinkedIn', 'bg-blue-600 hover:bg-blue-500')}
+        <div class="button-row">
+          ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'default')}
+          ${this._renderSocialButton('https://www.linkedin.com/in/maxevilmind', 'Connect on LinkedIn', 'primary')}
         </div>
       </section>
     `;
   }
 
-  _renderSocialButton(href, label, classes) {
+  _renderSocialButton(href, label, variant) {
     return html`
-      <a href="${href}" target="_blank" rel="noopener noreferrer" 
-         class="px-6 py-3 ${classes} rounded-lg transition-colors">
+      <app-button href="${href}" variant="${variant}" target="_blank">
         ${label}
-      </a>
+      </app-button>
     `;
   }
 
   _renderFeatureCards() {
     return html`
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      <section class="grid grid-2">
         <custom-card title="Expertise" hoverable>
-          <ul class="space-y-2">
+          <ul class="list">
             <li>• JavaScript/TypeScript Development</li>
             <li>• Single Page Applications</li>
             <li>• Cross-team Collaboration</li>
@@ -59,7 +59,7 @@ export class HomePage extends LitElement {
         </custom-card>
 
         <custom-card title="Current Focus" hoverable>
-          <ul class="space-y-2">
+          <ul class="list">
             <li>• Building SPA Platform at ING</li>
             <li>• Building and maintaining UI components library at ING</li>
             <li>• Leadership</li>

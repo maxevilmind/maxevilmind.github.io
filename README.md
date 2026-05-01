@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern portfolio website built with Web Components, Lit, and Tailwind CSS.
+A modern portfolio website built with Web Components, Lit, and a token-based CSS system.
 
 ## Project Structure
 
@@ -8,6 +8,7 @@ A modern portfolio website built with Web Components, Lit, and Tailwind CSS.
   - `src/components/pages/` - Page components
   - `src/components/ui/` - Reusable UI components
 - `src/utils/` - Utility functions and constants
+- `styles/main.css` - Global styles and design tokens
 - `index.html` - Main HTML file
 - `rollup.config.js` - Build configuration
 
@@ -33,8 +34,7 @@ This will create a production build in the `dist` directory.
 ## Technologies Used
 
 - [Lit](https://lit.dev/) - For creating web components
-- [Tailwind CSS](https://tailwindcss.com/) (via CDN) - For styling
-- [Lion Web Components](https://lion-web.netlify.app/) - Additional UI components
+- Token-based CSS system - For styling and theming
 - [Rollup](https://rollupjs.org/) - For bundling
 - [Web Dev Server](https://modern-web.dev/docs/dev-server/overview/) - Development server
 
@@ -43,4 +43,4 @@ This will create a production build in the `dist` directory.
 - Responsive design
 - Component-based architecture
 - Hash-based routing
-- Modern UI with Tailwind CSS 
+- Centralized design tokens for easy theme updates

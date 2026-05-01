@@ -3,7 +3,6 @@ import terser from '@rollup/plugin-terser';
 import html from '@rollup/plugin-html';
 import copy from 'rollup-plugin-copy';
 import { readFileSync } from 'fs';
-import { join } from 'path';
 
 const template = ({ files }) => {
   const html = readFileSync('index.html', 'utf-8');
@@ -24,8 +23,7 @@ export default {
     sourcemap: true,
     manualChunks: {
       vendor: [
-        'lit',
-        '@lion/ui/button.js'
+        'lit'
       ],
       pages: [
         './src/components/pages/HomePage.js',
@@ -41,7 +39,8 @@ export default {
   plugins: [
     copy({
       targets: [
-        { src: 'assets/*', dest: 'dist/assets' }
+        { src: 'assets/*', dest: 'dist/assets' },
+        { src: 'styles/*', dest: 'dist/styles' }
       ]
     }),
     resolve(),

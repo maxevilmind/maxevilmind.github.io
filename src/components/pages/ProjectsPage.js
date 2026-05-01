@@ -11,13 +11,13 @@ export class ProjectsPage extends LitElement {
 
   render() {
     return html`
-      <div class="space-y-8">
-        <h1 class="text-4xl font-bold">Projects</h1>
-        <p class="text-gray-300 mb-8">
+      <div class="page-stack">
+        <h1 class="hero-title">Projects</h1>
+        <p>
           A selection of projects I've worked on throughout my career and personal development.
         </p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-2">
           ${this._renderProjects()}
         </div>
       </div>
@@ -31,23 +31,23 @@ export class ProjectsPage extends LitElement {
         subtitle="${project.subtitle}"
         hoverable 
         clickable>
-        <div class="space-y-4">
+        <div class="page-stack" style="gap: var(--space-4);">
           ${project.image ? html`
-            <img src="${project.image}" alt="${project.title}" class="w-full rounded-lg shadow-lg" />
+            <img src="${project.image}" alt="${project.title}" style="width:100%;border-radius: var(--radius-sm);border:1px solid var(--color-border);" />
           ` : ''}
           <p>${project.description}</p>
-          <div class="flex flex-wrap gap-2">
+          <div class="badge-list">
             ${project.tags.map(tag => html`
-              <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">${tag}</span>
+              <span class="badge">${tag}</span>
             `)}
           </div>
           ${project.link ? html`
-            <div class="mt-4">
+            <div>
               <a 
                 href="${project.link}" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="text-blue-400 hover:text-blue-300 transition-colors">
+                class="link-inline">
                 View Project →
               </a>
             </div>

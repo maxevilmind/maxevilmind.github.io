@@ -1,4 +1,3 @@
-// import './styles/tailwind.css';
 import './components/PortfolioApp.js';
 
 // Import page components
