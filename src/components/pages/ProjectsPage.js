@@ -68,7 +68,7 @@ export class ProjectsPage extends LitElement {
       },
       {
         title: 'SPA Platform',
-        subtitle: 'Enterprise Application',
+        subtitle: 'Enterprise Applications',
         description: 'Contributed to the development of SPA platform that hosts numerous micro-frontends with standardized architecture and tools.',
         tags: ['JavaScript', 'Architecture', 'Authentication', 'Performance'],
         link: null

@@ -28,7 +28,7 @@ export class ContactPage extends LitElement {
               )}
               
               ${this._renderSocialLink(
-                'https://www.linkedin.com/in/maxevilmind',
+                'https://www.linkedin.com/in/larionov-m/',
                 'LinkedIn',
                 'primary',
                 this._getLinkedInIcon()

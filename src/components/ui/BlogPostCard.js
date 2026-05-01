@@ -80,10 +80,10 @@ export class BlogPostCard extends LitElement {
 
     return html`
       <article class="card">
-        ${this.post.image ? html`<img class="image" src="${this.post.image}" alt="${this.post.title}" loading="lazy" />` : ''}
         <div class="content">
-          <div class="meta"><p class="date">${this.post.date}</p></div>
           <h2 class="title">${this.post.title}</h2>
+          <div class="meta"><p class="date">${this.post.date}</p></div>
+          ${this.post.image ? html`<img class="image" src="${this.post.image}" alt="${this.post.title}" loading="lazy" />` : ''}
           <p class="preview">${previewText}</p>
           <div>
             <app-button href="${postUrl}" variant="primary">Read full article</app-button>
