@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "slug": "from-component-library-to-product-speed",
+      "title": "From Component Library to Product Speed",
+      "date": "2026-04-22",
+      "image": "assets/stats.png",
+      "excerpt": "Design systems only matter when product teams can move faster. Here is the checklist I use to keep a shared component library useful and lightweight in real product delivery."
+    },
+    {
+      "slug": "avoiding-microfrontend-friction",
+      "title": "Avoiding Micro-Frontend Friction",
+      "date": "2026-04-11",
+      "excerpt": "Most micro-frontend issues are not technical. They are ownership and boundaries problems. This post covers practical rules that reduce integration friction."
+    },
+    {
+      "slug": "web-components-in-large-orgs",
+      "title": "Web Components in Large Organizations",
+      "date": "2026-03-28",
+      "excerpt": "Web Components are a strong fit for platform teams when contracts are stable. I share the constraints and the wins from enterprise adoption."
+    },
+    {
+      "slug": "performance-budget-for-portfolio-sites",
+      "title": "A Performance Budget for Portfolio Sites",
+      "date": "2026-03-18",
+      "excerpt": "A personal site does not need a big framework to feel premium. A small performance budget gives clear decisions for scripts, images, and fonts."
+    },
+    {
+      "slug": "developer-experience-without-overengineering",
+      "title": "Developer Experience Without Overengineering",
+      "date": "2026-03-01",
+      "excerpt": "DX improves when projects are predictable. I walk through folder conventions, naming decisions, and where to stop abstracting."
+    },
+    {
+      "slug": "shipping-accessible-navigation",
+      "title": "Shipping Accessible Navigation",
+      "date": "2026-02-17",
+      "excerpt": "Accessible navigation is mostly about small details done consistently. Keyboard support, focus states, and meaningful labels are the baseline."
+    },
+    {
+      "slug": "testing-strategy-for-ui-platforms",
+      "title": "Testing Strategy for UI Platforms",
+      "date": "2026-02-05",
+      "excerpt": "A UI platform needs confidence across teams. This strategy keeps tests fast while still protecting contract and visual behavior."
+    },
+    {
+      "slug": "leading-through-code-reviews",
+      "title": "Leading Through Code Reviews",
+      "date": "2026-01-26",
+      "excerpt": "Code review is one of the best leadership tools for senior engineers. This post shows a practical review style that scales with teams."
+    }
+  ]
+}

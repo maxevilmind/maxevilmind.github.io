@@ -9,6 +9,7 @@ A modern portfolio website built with Web Components, Lit, and a token-based CSS
   - `src/components/ui/` - Reusable UI components
 - `src/utils/` - Utility functions and constants
 - `styles/main.css` - Global styles and design tokens
+- `content/blog/` - Blog content files (`*.json` per post)
 - `index.html` - Main HTML file
 - `rollup.config.js` - Build configuration
 
@@ -44,3 +45,4 @@ This will create a production build in the `dist` directory.
 - Component-based architecture
 - Hash-based routing
 - Centralized design tokens for easy theme updates
+- Developer blog with infinite scroll and JSON-backed content

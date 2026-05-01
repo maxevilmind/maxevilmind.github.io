@@ -40,7 +40,8 @@ export default {
     copy({
       targets: [
         { src: 'assets/*', dest: 'dist/assets' },
-        { src: 'styles/*', dest: 'dist/styles' }
+        { src: 'styles/*', dest: 'dist/styles' },
+        { src: 'content/**/*', dest: 'dist/content' }
       ]
     }),
     resolve(),

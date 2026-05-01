@@ -30,7 +30,7 @@ export class HomePage extends LitElement {
           With 7+ years of experience in building scalable applications and mentoring teams.
         </p>
         <div class="button-row">
-          ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'default')}
+          ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'secondary')}
           ${this._renderSocialButton('https://www.linkedin.com/in/maxevilmind', 'Connect on LinkedIn', 'primary')}
         </div>
       </section>

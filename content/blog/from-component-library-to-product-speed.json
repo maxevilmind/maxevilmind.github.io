@@ -1,0 +1,12 @@
+{
+  "slug": "from-component-library-to-product-speed",
+  "title": "From Component Library to Product Speed",
+  "date": "2026-04-22",
+  "image": "assets/stats.png",
+  "content": [
+    "A component library is successful only if it shortens delivery time for product teams. If it adds process and complexity, teams will bypass it and create local alternatives.",
+    "My rule is simple: every component must reduce duplicated work in at least two product surfaces. If that signal is not there, it belongs in the product codebase, not in the shared library.",
+    "The second rule is contract stability. APIs and slots should be boring and explicit. The best platform components are predictable and easy to document.",
+    "Finally, optimize for contribution flow. A shared library should make it easy for product engineers to submit improvements. Fast review cycles and clear ownership are more important than perfect abstraction."
+  ]
+}

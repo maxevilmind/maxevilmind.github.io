@@ -8,6 +8,7 @@ export const ROUTES = {
   PROJECTS: 'projects',
   ABOUT: 'about',
   CONTACT: 'contact',
+  BLOG: 'blog'
 };
 
 export const DEFAULT_ROUTE = ROUTES.HOME; 

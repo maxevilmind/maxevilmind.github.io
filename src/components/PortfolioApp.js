@@ -43,6 +43,8 @@ export class PortfolioApp extends LitElement {
     // Check if hash corresponds to a valid route
     if (hash && Object.values(ROUTES).includes(hash)) {
       this.currentPage = hash;
+    } else if (hash.startsWith(`${ROUTES.BLOG}/`)) {
+      this.currentPage = hash;
     } else if (!hash && window.location.hash === '') {
       // If no hash, set to default route
       this.currentPage = DEFAULT_ROUTE;
@@ -92,6 +94,7 @@ export class PortfolioApp extends LitElement {
           <div class="desktop-nav">
             ${this._renderNavButton(ROUTES.HOME, 'Home')}
             ${this._renderNavButton(ROUTES.PROJECTS, 'Projects')}
+            ${this._renderNavButton(ROUTES.BLOG, 'Blog')}
             ${this._renderNavButton(ROUTES.ABOUT, 'About')}
             ${this._renderNavButton(ROUTES.CONTACT, 'Contact')}
           </div>
@@ -144,6 +147,7 @@ export class PortfolioApp extends LitElement {
           <div class="mobile-menu-list">
             ${this._renderMobileNavButton(ROUTES.HOME, 'Home')}
             ${this._renderMobileNavButton(ROUTES.PROJECTS, 'Projects')}
+            ${this._renderMobileNavButton(ROUTES.BLOG, 'Blog')}
             ${this._renderMobileNavButton(ROUTES.ABOUT, 'About')}
             ${this._renderMobileNavButton(ROUTES.CONTACT, 'Contact')}
           </div>
@@ -153,8 +157,8 @@ export class PortfolioApp extends LitElement {
   }
 
   _renderNavButton(route, label) {
-    const isActive = this.currentPage === route;
-    const variant = isActive ? 'primary' : 'default';
+    const isActive = this.currentPage === route || this.currentPage.startsWith(`${route}/`);
+    const variant = isActive ? 'primary' : 'secondary';
     
     return html`
       <app-button variant="${variant}" @click=${() => this._navigateTo(route)}>
@@ -164,8 +168,8 @@ export class PortfolioApp extends LitElement {
   }
 
   _renderMobileNavButton(route, label) {
-    const isActive = this.currentPage === route;
-    const variant = isActive ? 'primary' : 'default';
+    const isActive = this.currentPage === route || this.currentPage.startsWith(`${route}/`);
+    const variant = isActive ? 'primary' : 'secondary';
     
     return html`
       <app-button
@@ -186,11 +190,17 @@ export class PortfolioApp extends LitElement {
         return html`<home-page></home-page>`;
       case ROUTES.PROJECTS:
         return html`<projects-page></projects-page>`;
+      case ROUTES.BLOG:
+        return html`<blog-page></blog-page>`;
       case ROUTES.ABOUT:
         return html`<about-page></about-page>`;
       case ROUTES.CONTACT:
         return html`<contact-page></contact-page>`;
       default:
+        if (this.currentPage.startsWith(`${ROUTES.BLOG}/`)) {
+          const slug = this.currentPage.substring(`${ROUTES.BLOG}/`.length);
+          return html`<blog-post-page slug="${slug}"></blog-post-page>`;
+        }
         return html`<home-page></home-page>`;
     }
   }

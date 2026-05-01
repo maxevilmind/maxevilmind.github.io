@@ -23,7 +23,7 @@ export class ContactPage extends LitElement {
               ${this._renderSocialLink(
                 'https://github.com/maxevilmind',
                 'GitHub',
-                'default',
+                'secondary',
                 this._getGitHubIcon()
               )}
               
