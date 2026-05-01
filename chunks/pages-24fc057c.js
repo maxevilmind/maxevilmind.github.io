@@ -12,32 +12,58 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      border-radius: var(--radius-sm, 8px);
-      border: 1px solid var(--color-border, #2b3f60);
-      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      border: 1px solid color-mix(in srgb, var(--color-border, #2b3f60) 70%, #0b1220);
+      padding: 0.48rem 0.88rem;
       text-decoration: none;
-      color: var(--color-text, #eff5ff);
+      color: var(--button-fg, var(--color-secondary-foreground, #d9e7ff));
       cursor: pointer;
-      background: var(--button-bg, var(--color-surface, #152238));
-      transition: background-color 120ms ease;
-      font: inherit;
+      background: var(--button-bg, var(--color-secondary, #1b2a44));
+      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
       line-height: 1.2;
+      white-space: nowrap;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
     }
 
     .button:hover {
-      background: var(--button-bg-hover, var(--color-surface-strong, #223552));
+      background: var(--button-bg-hover, var(--color-secondary-hover, #223552));
     }
 
     .button.primary {
       --button-bg: var(--color-primary, #2d7ff9);
       --button-bg-hover: var(--color-primary-hover, #1f70e7);
+      --button-fg: var(--color-primary-foreground, #f8fbff);
+      border-color: color-mix(in srgb, var(--color-border, #2b3f60) 65%, #0b1220);
+    }
+
+    .button.secondary {
+      --button-bg: var(--color-secondary, #1b2a44);
+      --button-bg-hover: var(--color-secondary-hover, #223552);
+      --button-fg: var(--color-secondary-foreground, #d9e7ff);
+      border-color: color-mix(in srgb, var(--color-border, #2b3f60) 70%, #0b1220);
+    }
+
+    .button.ghost {
+      --button-bg: transparent;
+      --button-bg-hover: color-mix(in srgb, var(--color-surface-strong, #223552) 60%, transparent);
+      --button-fg: var(--color-text, #eff5ff);
       border-color: transparent;
+    }
+
+    .button:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px color-mix(in srgb, var(--color-primary-foreground, #f8fbff) 14%, transparent),
+        0 1px 0 rgba(255, 255, 255, 0.04) inset;
     }
 
     .button.full {
       width: 100%;
     }
-  `;constructor(){super(),this.href="",this.variant="default",this.fullWidth=!1,this.target="_self"}render(){const e=`button ${this.variant} ${this.fullWidth?"full":""}`;if(this.href){const t="_blank"===this.target?"noopener noreferrer":"";return r`<a class="${e}" href="${this.href}" target="${this.target}" rel="${t}"><slot></slot></a>`}return r`<button class="${e}" type="button"><slot></slot></button>`}}customElements.define("app-button",AppButton);class CustomCard extends e{static properties={title:{type:String},subtitle:{type:String},icon:{type:String},variant:{type:String},hoverable:{type:Boolean},clickable:{type:Boolean}};static styles=t`
+  `;constructor(){super(),this.href="",this.variant="secondary",this.fullWidth=!1,this.target="_self"}render(){const e=`button ${this.variant} ${this.fullWidth?"full":""}`;if(this.href){const t="_blank"===this.target?"noopener noreferrer":"";return r`<a class="${e}" href="${this.href}" target="${this.target}" rel="${t}"><slot></slot></a>`}return r`<button class="${e}" type="button"><slot></slot></button>`}}customElements.define("app-button",AppButton);class CustomCard extends e{static properties={title:{type:String},subtitle:{type:String},icon:{type:String},variant:{type:String},hoverable:{type:Boolean},clickable:{type:Boolean}};static styles=t`
     :host {
       display: block;
     }
@@ -131,12 +157,12 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
           With 7+ years of experience in building scalable applications and mentoring teams.
         </p>
         <div class="button-row">
-          ${this._renderSocialButton("https://github.com/maxevilmind","View GitHub","default")}
+          ${this._renderSocialButton("https://github.com/maxevilmind","View GitHub","secondary")}
           ${this._renderSocialButton("https://www.linkedin.com/in/maxevilmind","Connect on LinkedIn","primary")}
         </div>
       </section>
-    `}_renderSocialButton(e,t,i){return r`
-      <app-button href="${e}" variant="${i}" target="_blank">
+    `}_renderSocialButton(e,t,o){return r`
+      <app-button href="${e}" variant="${o}" target="_blank">
         ${t}
       </app-button>
     `}_renderFeatureCards(){return r`
@@ -280,16 +306,16 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
             </p>
             
             <div class="social-links">
-              ${this._renderSocialLink("https://github.com/maxevilmind","GitHub","default",this._getGitHubIcon())}
+              ${this._renderSocialLink("https://github.com/maxevilmind","GitHub","secondary",this._getGitHubIcon())}
               
               ${this._renderSocialLink("https://www.linkedin.com/in/maxevilmind","LinkedIn","primary",this._getLinkedInIcon())}
             </div>
           </div>
         </custom-card>
       </div>
-    `}_renderSocialLink(e,t,i,o){return r`
-      <app-button href="${e}" target="_blank" variant="${i}">
-         ${o}
+    `}_renderSocialLink(e,t,o,i){return r`
+      <app-button href="${e}" target="_blank" variant="${o}">
+         ${i}
          ${t}
        </app-button>
     `}_getGitHubIcon(){return r`
@@ -301,4 +327,4 @@ import{i as e,a as t,x as r}from"./vendor-6907c12a.js";class AppButton extends e
         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
       </svg>
     `}});
-//# sourceMappingURL=pages-22c3a66f.js.map
+//# sourceMappingURL=pages-24fc057c.js.map

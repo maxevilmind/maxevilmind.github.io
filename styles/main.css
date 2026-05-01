@@ -6,13 +6,18 @@
   --color-surface-strong: #223552;
   --color-text: #eff5ff;
   --color-text-muted: #b9c7dd;
-  --color-primary: #2d7ff9;
-  --color-primary-hover: #1f70e7;
+  --color-primary: #111827;
+  --color-primary-hover: #1a2435;
+  --color-primary-foreground: #f1f5f9;
+  --color-secondary: #0f1726;
+  --color-secondary-hover: #172033;
+  --color-secondary-foreground: #d5deec;
   --color-border: #2b3f60;
   --color-overlay: rgba(7, 10, 18, 0.68);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-pill: 999px;
   --shadow-md: 0 8px 24px rgba(7, 10, 18, 0.25);
   --space-2: 8px;
   --space-3: 12px;
@@ -213,6 +218,32 @@ a {
 
 .link-inline:hover {
   color: var(--color-primary-hover);
+}
+
+.blog-sentinel {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-6) 0;
+}
+
+.article {
+  max-width: 780px;
+}
+
+.article-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.article-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.article-content p {
+  color: var(--color-text);
 }
 
 @media (min-width: 768px) {

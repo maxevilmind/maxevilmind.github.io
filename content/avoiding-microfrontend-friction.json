@@ -1,0 +1,11 @@
+{
+  "slug": "avoiding-microfrontend-friction",
+  "title": "Avoiding Micro-Frontend Friction",
+  "date": "2026-04-11",
+  "content": [
+    "Micro-frontends fail when boundaries are fuzzy. Teams need clear ownership for runtime shell responsibilities versus domain app responsibilities.",
+    "The most useful step is defining contracts early: routing handoff, shared auth behavior, and observability shape. These contracts should be tiny and versioned.",
+    "For day-to-day delivery, keep the platform path paved. If the default setup is easy, product teams follow it. If setup is heavy, every team forks local solutions.",
+    "When coordination gets hard, reduce coupling before adding tooling. Most friction disappears when teams can ship independently with minimal synchronization."
+  ]
+}
