@@ -12,45 +12,44 @@ export class AboutPage extends LitElement {
   render() {
     return html`
       <div class="page-stack">
-        ${this._renderAboutMe()}
-        ${this._renderCurrentRole()}
-        ${this._renderTechnicalStack()}
+        <section class="panel">
+          <div class="panel-content section-stack">
+            <p class="eyebrow">operator dossier</p>
+            <h1 class="section-title">Engineer With <span class="accent">Taste</span></h1>
+            <p class="hero-text">
+              I am a Staff Engineer at ABN AMRO with 8+ years of JavaScript experience in the Amsterdam area. I enjoy the space where reliable engineering meets crisp, practical UI craft.
+            </p>
+          </div>
+        </section>
+
+        <section class="grid dashboard-grid">
+          ${this._renderCurrentRole()}
+          ${this._renderTechnicalStack()}
+        </section>
+
+        <section class="grid grid-3">
+          ${this._renderPrinciple('01', 'Calm Complexity', 'Turn messy systems into understandable flows, components, and platform boundaries.')}
+          ${this._renderPrinciple('02', 'Visible Quality', 'Use spacing, typography, feedback, and motion to make quality immediately visible.')}
+          ${this._renderPrinciple('03', 'Pragmatic Delivery', 'Prefer small, correct changes and systems that teams can actually maintain.')}
+        </section>
+
         ${this._renderContributions()}
       </div>
     `;
   }
 
-  _renderAboutMe() {
-    return html`
-      <custom-card title="About Me" subtitle="Senior Software Engineer at ING" hoverable>
-        <div class="page-stack" style="gap: var(--space-4);">
-          <p>
-            I'm a Senior Software Engineer with 8+ years of experience in JavaScript development, 
-            currently working at ING in the Amsterdam Area. I specialize in building scalable 
-            applications and solving complex problems.
-          </p>
-          <p>
-            My journey in software development started at the American University of Central Asia, 
-            where I developed a passion for algorithm programming, IoT device development, hardware and many other things.
-          </p>
-        </div>
-      </custom-card>
-    `;
-  }
-
   _renderCurrentRole() {
     return html`
-      <custom-card title="Current Role" subtitle="ING - Senior Software Engineer" hoverable>
-        <div class="page-stack" style="gap: var(--space-4);">
+      <custom-card title="Current Role" subtitle="ABN AMRO / staff engineer" icon="ABN" variant="primary" hoverable>
+        <div class="section-stack">
           <p>
-            At ING, I'm contributing to a single-page application platform that serves as the 
-            foundation for various banking services. My role involves:
+            I work on frontend platform and UI engineering for banking services. The work spans shared architecture, reusable UI, developer experience, and cross-team decision making.
           </p>
           <ul class="list">
             <li>Cross-team collaboration and technical leadership</li>
-            <li>Mentoring junior developers and sharing knowledge</li>
-            <li>Implementing best practices and architectural decisions</li>
-            <li>Contributing to the platform's growth and evolution</li>
+            <li>Mentoring, reviews, and knowledge sharing</li>
+            <li>Design system and web component quality</li>
+            <li>Platform evolution with performance in mind</li>
           </ul>
         </div>
       </custom-card>
@@ -59,45 +58,56 @@ export class AboutPage extends LitElement {
 
   _renderTechnicalStack() {
     return html`
-      <custom-card title="Technical Stack" hoverable>
-        <div class="grid grid-2">
-          <div>
-            <h3 style="margin-bottom: var(--space-2);">Frontend</h3>
-            <ul class="list">
-              <li>JavaScript/TypeScript</li>
-              <li>React</li>
-              <li>Web Components</li>
-              <li>Tailwind CSS</li>
-            </ul>
-          </div>
-          <div>
-            <h3 style="margin-bottom: var(--space-2);">Backend</h3>
-            <ul class="list">
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>MongoDB</li>
-              <li>REST APIs</li>
-            </ul>
-          </div>
+      <custom-card title="Technical Stack" subtitle="frontend-heavy, system-aware" icon="TS" variant="accent" hoverable>
+        <div class="skill-list">
+          ${this._renderSkill('JavaScript / TypeScript', '96%')}
+          ${this._renderSkill('Lit / Web Components', '92%')}
+          ${this._renderSkill('React Ecosystem', '84%')}
+          ${this._renderSkill('Node.js / APIs', '76%')}
+          ${this._renderSkill('Hardware / IoT', '68%')}
         </div>
+      </custom-card>
+    `;
+  }
+
+  _renderSkill(label, value) {
+    return html`
+      <div class="skill-row">
+        <div class="skill-label">
+          <span>${label}</span>
+          <span>${value}</span>
+        </div>
+        <div class="progress-track"><span class="progress-fill" style="--value: ${value};"></span></div>
+      </div>
+    `;
+  }
+
+  _renderPrinciple(icon, title, description) {
+    return html`
+      <custom-card title=${title} subtitle="working principle" icon=${icon} variant="secondary" hoverable>
+        <p>${description}</p>
       </custom-card>
     `;
   }
 
   _renderContributions() {
     return html`
-      <custom-card title="Contributions" hoverable>
-        <div class="page-stack" style="gap: var(--space-4);">
-          <p>
-            I'm actively contributing to the open-source community and sharing my knowledge 
-            through various platforms. Check out my contributions on 
-            <a href="https://github.com/maxevilmind" target="_blank" rel="noopener noreferrer" 
-               class="link-inline">GitHub</a>.
+      <section class="panel panel-compact">
+        <div class="panel-content">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">outside work</p>
+              <h2 class="panel-title">Hardware, open source, and experiments</h2>
+            </div>
+            <span class="panel-code">always tinkering</span>
+          </div>
+          <p class="hero-text">
+            Outside work I build home automation, experiment with ESP32, Arduino, Raspberry Pi, local AI tools, and LoRa communication systems. I also contribute to open source when I can. You can find the public bits on <a href="https://github.com/maxevilmind" target="_blank" rel="noopener noreferrer" class="link-inline">GitHub</a>.
           </p>
         </div>
-      </custom-card>
+      </section>
     `;
   }
 }
 
-customElements.define('about-page', AboutPage); 
+customElements.define('about-page', AboutPage);

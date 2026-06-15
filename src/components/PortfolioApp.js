@@ -88,10 +88,16 @@ export class PortfolioApp extends LitElement {
     return html`
       <header class="site-header">
         <nav class="site-nav container">
-          <h1 class="brand">Max Larionov</h1>
-          
-          <!-- Desktop Navigation -->
+          <h1 class="brand">
+            <span class="brand-mark">ML</span>
+            <span class="brand-copy">
+              <span class="brand-name">Maksim Larionov</span>
+              <span class="brand-status">portfolio os / online</span>
+            </span>
+          </h1>
+
           <div class="desktop-nav">
+            <span class="nav-status">signal stable</span>
             ${this._renderNavButton(ROUTES.HOME, 'Home')}
             ${this._renderNavButton(ROUTES.PROJECTS, 'Projects')}
             ${this._renderNavButton(ROUTES.BLOG, 'Blog')}
@@ -99,7 +105,6 @@ export class PortfolioApp extends LitElement {
             ${this._renderNavButton(ROUTES.CONTACT, 'Contact')}
           </div>
 
-          <!-- Mobile Menu Button -->
           <button 
             @click=${this._toggleMenu}
             class="icon-button mobile-toggle"
@@ -120,16 +125,18 @@ export class PortfolioApp extends LitElement {
 
   _renderMobileMenu() {
     return html`
-      <!-- Mobile Menu Overlay -->
       <div
         class="mobile-menu-overlay ${this.isMenuOpen ? '' : 'is-hidden'}"
         @click=${this._closeMenu}>
       </div>
 
-      <!-- Mobile Menu Sidebar -->
       <div class="mobile-menu-panel ${this.isMenuOpen ? 'is-open' : ''}">
         <div>
-          <div style="display:flex;justify-content:flex-end;">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">navigation</p>
+              <p class="panel-code">mobile uplink</p>
+            </div>
             <button 
               @click=${this._closeMenu}
               class="icon-button"
@@ -143,6 +150,10 @@ export class PortfolioApp extends LitElement {
                 </path>
               </svg>
             </button>
+          </div>
+          <div class="terminal-lines">
+            <span class="terminal-line">select route</span>
+            <span class="terminal-line">session is encrypted-ish</span>
           </div>
           <div class="mobile-menu-list">
             ${this._renderMobileNavButton(ROUTES.HOME, 'Home')}

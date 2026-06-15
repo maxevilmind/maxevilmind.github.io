@@ -62,14 +62,28 @@ export class BlogPostPage extends LitElement {
 
   render() {
     if (this.isLoading) {
-      return html`<div class="page-stack"><p>Loading article...</p></div>`;
+      return html`
+        <div class="page-stack">
+          <section class="panel panel-compact">
+            <div class="panel-content section-stack">
+              <p class="eyebrow">article uplink</p>
+              <p>Loading article...</p>
+            </div>
+          </section>
+        </div>
+      `;
     }
 
     if (this.errorMessage || !this.post) {
       return html`
         <div class="page-stack">
           <app-button href="#blog">Back to blog</app-button>
-          <p>${this.errorMessage || 'Article not found.'}</p>
+          <section class="panel panel-compact">
+            <div class="panel-content section-stack">
+              <p class="eyebrow">article uplink</p>
+              <p>${this.errorMessage || 'Article not found.'}</p>
+            </div>
+          </section>
         </div>
       `;
     }
@@ -79,12 +93,17 @@ export class BlogPostPage extends LitElement {
         <div>
           <app-button href="#blog">Back to blog</app-button>
         </div>
-        <header class="page-stack" style="gap: var(--space-3);">
-          <p class="article-meta">${this.post.date}</p>
-          <h1 class="hero-title">${this.post.title}</h1>
-        </header>
+        <section class="panel article-header">
+          <div class="panel-content section-stack">
+            <p class="eyebrow">field transmission</p>
+            <p class="article-meta">${this.post.date}</p>
+            <h1 class="article-title">${this.post.title}</h1>
+          </div>
+        </section>
         ${this.post.image ? html`<img class="article-image" src="${this.post.image}" alt="${this.post.title}" />` : ''}
-        <div class="article-content">${unsafeHTML(this._renderedMarkdown)}</div>
+        <section class="panel panel-compact">
+          <div class="panel-content article-content">${unsafeHTML(this._renderedMarkdown)}</div>
+        </section>
       </article>
     `;
   }

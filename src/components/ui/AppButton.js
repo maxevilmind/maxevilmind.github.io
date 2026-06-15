@@ -18,56 +18,93 @@ export class AppButton extends LitElement {
     }
 
     .button {
+      position: relative;
+      isolation: isolate;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      border-radius: 10px;
-      border: 1px solid color-mix(in srgb, var(--color-border, #2b3f60) 70%, #0b1220);
-      padding: 0.48rem 0.88rem;
+      gap: 0.55rem;
+      min-height: 42px;
+      overflow: hidden;
+      border-radius: var(--radius-pill, 999px);
+      border: 1px solid var(--button-border, var(--color-border, rgba(160, 133, 255, 0.26)));
+      padding: 0.66rem 1rem;
       text-decoration: none;
-      color: var(--button-fg, var(--color-secondary-foreground, #d9e7ff));
+      color: var(--button-fg, var(--color-secondary-foreground, #efeaff));
       cursor: pointer;
-      background: var(--button-bg, var(--color-secondary, #1b2a44));
-      transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 500;
+      background:
+        linear-gradient(135deg, var(--button-bg-start, rgba(255, 255, 255, 0.08)), var(--button-bg-end, rgba(255, 255, 255, 0.03))),
+        var(--color-secondary, #1a1432);
+      transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        color 160ms ease,
+        background-color 160ms ease;
+      font-family: var(--font-family-mono, monospace);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       line-height: 1.2;
+      text-transform: uppercase;
       white-space: nowrap;
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.12) 0,
+        rgba(255, 255, 255, 0.12) 1px,
+        transparent 1px,
+        transparent 5px
+      );
+      opacity: 0.16;
     }
 
     .button:hover {
-      background: var(--button-bg-hover, var(--color-secondary-hover, #223552));
+      transform: translateY(-1px);
+      border-color: var(--button-border-hover, var(--color-border-strong, rgba(94, 252, 255, 0.48)));
+      box-shadow: var(--button-shadow, 0 0 24px rgba(94, 252, 255, 0.18));
+    }
+
+    .button:active {
+      transform: translateY(0);
     }
 
     .button.primary {
-      --button-bg: var(--color-primary, #2d7ff9);
-      --button-bg-hover: var(--color-primary-hover, #1f70e7);
-      --button-fg: var(--color-primary-foreground, #f8fbff);
-      border-color: color-mix(in srgb, var(--color-border, #2b3f60) 65%, #0b1220);
+      --button-bg-start: rgba(94, 252, 255, 0.92);
+      --button-bg-end: rgba(255, 77, 243, 0.76);
+      --button-border: rgba(94, 252, 255, 0.78);
+      --button-border-hover: rgba(255, 255, 255, 0.78);
+      --button-fg: var(--color-primary-foreground, #021014);
+      --button-shadow: 0 0 28px rgba(94, 252, 255, 0.32), 0 0 34px rgba(255, 77, 243, 0.22);
     }
 
     .button.secondary {
-      --button-bg: var(--color-secondary, #1b2a44);
-      --button-bg-hover: var(--color-secondary-hover, #223552);
-      --button-fg: var(--color-secondary-foreground, #d9e7ff);
-      border-color: color-mix(in srgb, var(--color-border, #2b3f60) 70%, #0b1220);
+      --button-bg-start: rgba(255, 255, 255, 0.075);
+      --button-bg-end: rgba(94, 252, 255, 0.08);
+      --button-fg: var(--color-secondary-foreground, #efeaff);
+      --button-border: var(--color-border, rgba(160, 133, 255, 0.26));
     }
 
     .button.ghost {
-      --button-bg: transparent;
-      --button-bg-hover: color-mix(in srgb, var(--color-surface-strong, #223552) 60%, transparent);
-      --button-fg: var(--color-text, #eff5ff);
-      border-color: transparent;
+      --button-bg-start: transparent;
+      --button-bg-end: transparent;
+      --button-border: transparent;
+      --button-fg: var(--color-primary, #5efcff);
+      --button-shadow: none;
     }
 
     .button:focus-visible {
       outline: none;
       box-shadow:
-        0 0 0 2px color-mix(in srgb, var(--color-primary-foreground, #f8fbff) 14%, transparent),
-        0 1px 0 rgba(255, 255, 255, 0.04) inset;
+        0 0 0 3px color-mix(in srgb, var(--color-primary, #5efcff) 28%, transparent),
+        var(--button-shadow, 0 0 24px rgba(94, 252, 255, 0.18));
     }
 
     .button.full {
@@ -88,10 +125,10 @@ export class AppButton extends LitElement {
 
     if (this.href) {
       const rel = this.target === '_blank' ? 'noopener noreferrer' : '';
-      return html`<a class="${className}" href="${this.href}" target="${this.target}" rel="${rel}"><slot></slot></a>`;
+      return html`<a class=${className} href=${this.href} target=${this.target} rel=${rel}><slot></slot></a>`;
     }
 
-    return html`<button class="${className}" type="button"><slot></slot></button>`;
+    return html`<button class=${className} type="button"><slot></slot></button>`;
   }
 }
 

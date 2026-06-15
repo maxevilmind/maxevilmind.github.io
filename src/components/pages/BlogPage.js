@@ -87,21 +87,44 @@ export class BlogPage extends LitElement {
 
   render() {
     if (this.isLoading) {
-      return html`<div class="page-stack"><h1 class="hero-title">Blog</h1><p>Loading posts...</p></div>`;
+      return html`
+        <div class="page-stack">
+          <section class="panel panel-compact">
+            <div class="panel-content section-stack">
+              <p class="eyebrow">signal archive</p>
+              <h1 class="section-title">Loading <span class="accent">Posts</span></h1>
+              <p>Indexing transmissions...</p>
+            </div>
+          </section>
+        </div>
+      `;
     }
 
     if (this.errorMessage) {
-      return html`<div class="page-stack"><h1 class="hero-title">Blog</h1><p>${this.errorMessage}</p></div>`;
+      return html`
+        <div class="page-stack">
+          <section class="panel panel-compact">
+            <div class="panel-content section-stack">
+              <p class="eyebrow">signal archive</p>
+              <h1 class="section-title">Archive <span class="accent">Offline</span></h1>
+              <p>${this.errorMessage}</p>
+            </div>
+          </section>
+        </div>
+      `;
     }
 
     const visiblePosts = this.posts.slice(0, this.visibleCount);
 
     return html`
       <div class="page-stack">
-        <header class="page-stack" style="gap: var(--space-3);">
-          <h1 class="hero-title">Developer Blog</h1>
-          <p>Ideas, engineering notes, and practical lessons from building products.</p>
-        </header>
+        <section class="panel">
+          <div class="panel-content section-stack">
+            <p class="eyebrow">signal archive</p>
+            <h1 class="section-title">Developer <span class="accent">Blog</span></h1>
+            <p class="hero-text">Ideas, engineering notes, hardware experiments, and practical lessons from building products.</p>
+          </div>
+        </section>
 
         <section class="page-stack">
           ${visiblePosts.map(post => html`<blog-post-card .post=${post}></blog-post-card>`) }
