@@ -34,7 +34,7 @@ export class HomePage extends LitElement {
               <p class="eyebrow">senior frontend engineer</p>
               <h1 class="hero-title">Clean <span class="accent">Future</span> UI</h1>
               <p class="hero-text">
-                I build resilient web platforms, design systems, and polished interfaces with a practical engineering mindset. This site is now styled as a retro-futurist control room: sharp hierarchy, neon feedback, and clean dashboard structure.
+                I build resilient web platforms, design systems, and polished interfaces with a practical engineering mindset and focus on best DX and UX.
               </p>
               <div class="button-row">
                 ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'secondary')}
@@ -46,7 +46,7 @@ export class HomePage extends LitElement {
               <div class="status-strip">
                 <span class="status-pill green">web components</span>
                 <span class="status-pill hot">design systems</span>
-                <span class="status-pill">platform work</span>
+                <span class="status-pill">frontend platforms</span>
               </div>
               <div style="margin-top: var(--space-5);">
                 <div class="progress-track"><span class="progress-fill" style="--value: 84%;"></span></div>
@@ -94,7 +94,7 @@ export class HomePage extends LitElement {
         ${this._renderMetric('8+', 'years building interfaces')}
         ${this._renderMetric('100%', 'web component native')}
         ${this._renderMetric('24/7', 'curiosity runtime')}
-        ${this._renderMetric('140ms', 'performance mindset')}
+        ${this._renderMetric('1ms', 'performance mindset')}
       </section>
     `;
   }

@@ -207,7 +207,7 @@ export class ProjectsPage extends LitElement {
         code: 'WC',
         title: 'Web Components',
         subtitle: 'Enterprise component system',
-        description: 'Maintaining and evolving reusable web component systems across enterprise applications, including documentation, testing, architecture, and design collaboration.',
+        description: 'Maintained and evolved reusable web component systems across enterprise applications, including documentation, testing, architecture, and design collaboration.',
         tags: ['Web Components', 'TypeScript', 'Storybook', 'CI/CD'],
         link: null,
         variant: 'primary'
@@ -236,6 +236,24 @@ export class ProjectsPage extends LitElement {
         subtitle: 'Community contributions',
         description: 'Small but meaningful contributions across JavaScript projects, documentation, testing, and tooling. Not everything has to be massive to be useful.',
         tags: ['Open Source', 'JavaScript', 'Docs', 'Testing'],
+        link: 'https://github.com/maxevilmind',
+        variant: 'primary'
+      },
+      {
+        code: 'AI',
+        title: 'AI Models',
+        subtitle: 'Personal projects',
+        description: 'I spend quite a lot of time experimenting with AI models and tools. In my free time I play with local LLMs and image/video generation pipelines on my 7900xtx. I run these locally: LTX 2.3, WAN 2.2, QWEN, and others. In the past I trained my own models for road markup recognition long before AI hype came in.',
+        tags: ['AI', 'LLM', 'image', 'video', 'text'],
+        link: 'https://github.com/maxevilmind',
+        variant: 'primary'
+      },
+      {
+        code: 'MC',
+        title: 'Meshcore',
+        subtitle: 'Personal projects',
+        description: 'I run my own Meshcore repeater fully powered by solar energy. I own a bunch of lora devices where I run Meshcore firmare and stay online. This is a fun way to tinker with hardware, solder stuff, and do something physical.',
+        tags: ['Meshcore', 'Lora', 'esp32', 'hardware',],
         link: 'https://github.com/maxevilmind',
         variant: 'primary'
       },
