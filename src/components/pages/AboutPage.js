@@ -22,15 +22,16 @@ export class AboutPage extends LitElement {
           </div>
         </section>
 
-        <section class="grid dashboard-grid">
+        <section class="grid grid-3">
           ${this._renderCurrentRole()}
+          ${this._renderPastRole()}
           ${this._renderTechnicalStack()}
         </section>
 
         <section class="grid grid-3">
           ${this._renderPrinciple('01', 'Calm Complexity', 'Turn messy systems into understandable flows, components, and platform boundaries.')}
           ${this._renderPrinciple('02', 'Visible Quality', 'Use spacing, typography, feedback, and motion to make quality immediately visible.')}
-          ${this._renderPrinciple('03', 'Pragmatic Delivery', 'Prefer small, correct changes and systems that teams can actually maintain.')}
+          ${this._renderPrinciple('03', 'Pragmatic', 'Prefer small, correct changes and systems that teams can actually maintain.')}
         </section>
 
         ${this._renderContributions()}
@@ -39,19 +40,52 @@ export class AboutPage extends LitElement {
   }
 
   _renderCurrentRole() {
-    return html`
-      <custom-card title="Current Role" subtitle="ABN AMRO / staff engineer" icon="ABN" variant="primary" hoverable>
+    return this._renderRoleCard(
+      'Current Role',
+      'ABN AMRO / staff engineer (Current)',
+      'ABN',
+      'primary',
+      html`
         <div class="section-stack">
           <p>
-            I work on frontend platform and UI engineering for banking services. The work spans shared architecture, reusable UI, developer experience, and cross-team decision making.
+            I work in core transactions grid currently focusing on DX and initiatives to make devs more productive.
+          </p>
+          <ul class="list">
+            <li>Here will be the list of core points I worked on.</li>
+          </ul>
+        </div>
+      `
+    );
+  }
+
+  _renderPastRole() {
+    return this._renderRoleCard(
+      'Past Role',
+      'ING / senior frontend engineer (Feb 2019 - May 2026)',
+      'ING',
+      'secondary',
+      html`
+        <div class="section-stack">
+          <p>
+            I worked on frontend platform and UI engineering for banking services. The work spans shared architecture, component libraries, developer tooling, microfrontend shell hosting numerous applications, developer experience, and cross-team decision making.
           </p>
           <ul class="list">
             <li>Cross-team collaboration and technical leadership</li>
             <li>Mentoring, reviews, and knowledge sharing</li>
             <li>Design system and web component quality</li>
-            <li>Platform evolution with performance in mind</li>
+            <li>Built mature frontend platform</li>
+            <li>Microfrontends</li>
+            <li>Component libraries</li>
           </ul>
         </div>
+      `
+    );
+  }
+
+  _renderRoleCard(title, subtitle, icon, variant, content) {
+    return html`
+      <custom-card title=${title} subtitle=${subtitle} icon=${icon} variant=${variant} hoverable>
+        ${content}
       </custom-card>
     `;
   }

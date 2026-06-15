@@ -1133,10 +1133,6 @@ img {
   text-transform: uppercase;
 }
 
-.article {
-  max-width: 860px;
-}
-
 .article.page-stack {
   gap: var(--space-4);
 }
