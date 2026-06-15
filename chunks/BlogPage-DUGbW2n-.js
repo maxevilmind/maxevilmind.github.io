@@ -1,4 +1,4 @@
-import{i as s,a as e,b as t}from"./vendor-DbZKYTSE.js";import{t as a,g as r}from"./blog-75tRZMTn.js";import"../index-BFCfTe5F.js";class i extends s{static properties={post:{type:Object}};static styles=e`
+import{i as s,a as e,b as t}from"./vendor-DbZKYTSE.js";import{t as a,g as r}from"./blog-75tRZMTn.js";import"../index-CDQb2OK7.js";class i extends s{static properties={post:{type:Object}};static styles=e`
     :host {
       display: block;
     }

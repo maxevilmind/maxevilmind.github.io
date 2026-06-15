@@ -1,4 +1,4 @@
-import{i as e,b as t}from"./vendor-DbZKYTSE.js";import"../index-BFCfTe5F.js";class s extends e{createRenderRoot(){return this}render(){return t`
+import{i as e,b as t}from"./vendor-DbZKYTSE.js";import"../index-CDQb2OK7.js";class s extends e{createRenderRoot(){return this}render(){return t`
       <div class="page-stack">
         <section class="panel">
           <div class="panel-content section-stack">
