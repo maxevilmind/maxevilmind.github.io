@@ -100,7 +100,7 @@ import{i as e,a as t,b as a}from"./chunks/vendor-DbZKYTSE.js";const r={HOME:"hom
     .button.full {
       width: 100%;
     }
-  `;constructor(){super(),this.href="",this.variant="secondary",this.fullWidth=!1,this.target="_self"}render(){const e=`button ${this.variant} ${this.fullWidth?"full":""}`;if(this.href){const t="_blank"===this.target?"noopener noreferrer":"";return a`<a class=${e} href=${this.href} target=${this.target} rel=${t}><slot></slot></a>`}return a`<button class=${e} type="button"><slot></slot></button>`}}customElements.define("app-button",n);const o={[r.HOME]:()=>Promise.resolve().then((function(){return d})),[r.PROJECTS]:()=>import("./chunks/ProjectsPage-CdZV18_T.js"),[r.BLOG]:()=>import("./chunks/BlogPage-qGFnhPBf.js"),[r.ABOUT]:()=>import("./chunks/AboutPage-Cxelj4HD.js"),[r.CONTACT]:()=>import("./chunks/ContactPage-Da2QXwUW.js"),blogPost:()=>import("./chunks/BlogPostPage-BT5MIeyv.js")};class i extends e{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean},isPageLoading:{type:Boolean},pageLoadError:{type:String}};constructor(){super(),this.currentPage=s,this.isMenuOpen=!1,this.isPageLoading=!1,this.pageLoadError="",this._loadedPages=new Set([r.HOME]),this._routeLoadToken=0,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const e=window.location.hash.substring(1);e&&Object.values(r).includes(e)||e.startsWith(`${r.BLOG}/`)?this.currentPage=e:e||""!==window.location.hash||(this.currentPage=s),this._loadCurrentPage()}_getPageKey(e=this.currentPage){return e.startsWith(`${r.BLOG}/`)?"blogPost":e}async _loadCurrentPage(){const e=this._getPageKey(),t=o[e]||o[s];if(this._loadedPages.has(e))return this.isPageLoading=!1,void(this.pageLoadError="");const a=++this._routeLoadToken;this.isPageLoading=!0,this.pageLoadError="";try{await t(),this._loadedPages.add(e)}catch(e){this.pageLoadError="Could not load this page."}finally{a===this._routeLoadToken&&(this.isPageLoading=!1)}}_prefetchRoute(e){const t=this._getPageKey(e);this._loadedPages.has(t)||o[t]?.().then((()=>this._loadedPages.add(t))).catch((()=>{}))}_navigateTo(e){window.location.hash=e}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return a`
+  `;constructor(){super(),this.href="",this.variant="secondary",this.fullWidth=!1,this.target="_self"}render(){const e=`button ${this.variant} ${this.fullWidth?"full":""}`;if(this.href){const t="_blank"===this.target?"noopener noreferrer":"";return a`<a class=${e} href=${this.href} target=${this.target} rel=${t}><slot></slot></a>`}return a`<button class=${e} type="button"><slot></slot></button>`}}customElements.define("app-button",n);const o={[r.HOME]:()=>Promise.resolve().then((function(){return d})),[r.PROJECTS]:()=>import("./chunks/ProjectsPage-B7ftwHJN.js"),[r.BLOG]:()=>import("./chunks/BlogPage-CbpOgBCt.js"),[r.ABOUT]:()=>import("./chunks/AboutPage-iQwngoiB.js"),[r.CONTACT]:()=>import("./chunks/ContactPage-DKyulDHz.js"),blogPost:()=>import("./chunks/BlogPostPage-DjK5FGud.js")};class i extends e{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean},isPageLoading:{type:Boolean},pageLoadError:{type:String}};constructor(){super(),this.currentPage=s,this.isMenuOpen=!1,this.isPageLoading=!1,this.pageLoadError="",this._loadedPages=new Set([r.HOME]),this._routeLoadToken=0,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const e=window.location.hash.substring(1);e&&Object.values(r).includes(e)||e.startsWith(`${r.BLOG}/`)?this.currentPage=e:e||""!==window.location.hash||(this.currentPage=s),this._loadCurrentPage()}_getPageKey(e=this.currentPage){return e.startsWith(`${r.BLOG}/`)?"blogPost":e}async _loadCurrentPage(){const e=this._getPageKey(),t=o[e]||o[s];if(this._loadedPages.has(e))return this.isPageLoading=!1,void(this.pageLoadError="");const a=++this._routeLoadToken;this.isPageLoading=!0,this.pageLoadError="";try{await t(),this._loadedPages.add(e)}catch(e){this.pageLoadError="Could not load this page."}finally{a===this._routeLoadToken&&(this.isPageLoading=!1)}}_prefetchRoute(e){const t=this._getPageKey(e);this._loadedPages.has(t)||o[t]?.().then((()=>this._loadedPages.add(t))).catch((()=>{}))}_navigateTo(e){window.location.hash=e}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return a`
       <div class="app-shell">
         ${this._renderHeader()}
         <main class="page-main container">
@@ -377,7 +377,16 @@ import{i as e,a as t,b as a}from"./chunks/vendor-DbZKYTSE.js";const r={HOME:"hom
               <p class="eyebrow">senior frontend engineer</p>
               <h1 class="hero-title">Clean <span class="accent">Future</span> UI</h1>
               <p class="hero-text">
-                I build resilient web platforms, design systems, and polished interfaces with a practical engineering mindset and focus on best DX and UX.
+                I build and evolve large-scale web architectures - microfrontends, design systems, internal tooling, and cross-team platform standards.
+                Facilitated migrations of dozens of applications, improved developer experience across teams by providing a fontend platform for microfrontends, driving adoption of improved monitoring,
+                best practices for testing and AI workflows adoption.
+              </p>
+              <p class="hero-text">
+                I enjoy operating at the intersection of architecture, scalability, and developer productivity, turning fragmented frontend into maintainable, scalable systems.
+                Strong JavaScript foundation. Experience across Web Components, and Node.js, native browser stack and latest JavaScript standards. I care less about frameworks and more about building durable systems.
+              </p>
+              <p class="hero-text">
+                Outside of work, I enjoy experimenting with embedded systems like ESP32, Arduino, Raspberry Pi, IOTs, Smart Home, music production, AI, running and many other things.
               </p>
               <div class="button-row">
                 ${this._renderSocialButton("https://github.com/maxevilmind","View GitHub","secondary")}
@@ -444,6 +453,7 @@ import{i as e,a as t,b as a}from"./chunks/vendor-DbZKYTSE.js";const r={HOME:"hom
             ${this._renderSkill("Web Components","92%")}
             ${this._renderSkill("Design Systems","88%")}
             ${this._renderSkill("Mentoring","90%")}
+            ${this._renderSkill("Microfrontends","91%")}
           </div>
         </custom-card>
 
