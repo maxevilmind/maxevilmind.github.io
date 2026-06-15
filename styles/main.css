@@ -573,6 +573,16 @@ img {
   gap: var(--space-6);
 }
 
+.profile-panel-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.profile-game {
+  margin-top: auto;
+}
+
 .signal-orb {
   position: relative;
   display: grid;

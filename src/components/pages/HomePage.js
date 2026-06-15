@@ -70,7 +70,7 @@ export class HomePage extends LitElement {
         </div>
 
         <aside class="panel panel-compact profile-card">
-          <div class="panel-content">
+          <div class="panel-content profile-panel-content">
             <div class="panel-header">
               <div>
                 <p class="eyebrow">operator</p>
@@ -78,13 +78,12 @@ export class HomePage extends LitElement {
               </div>
               <span class="panel-code">v8+</span>
             </div>
-            <div class="signal-orb" aria-hidden="true"></div>
             <div class="mt-20 mb-20 terminal-lines">
               <span class="terminal-line">location: Amsterdam area</span>
               <span class="terminal-line">role: staff engineer at ABN AMRO</span>
               <span class="terminal-line">focus: UI platforms, components, IoT</span>
             </div>
-            <space-invaders-game></space-invaders-game>
+            <space-invaders-game class="profile-game"></space-invaders-game>
           </div>
         </aside>
       </section>

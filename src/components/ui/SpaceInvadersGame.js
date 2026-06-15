@@ -6,7 +6,8 @@ import { LitElement, html, css } from 'lit';
 export class SpaceInvadersGame extends LitElement {
   static properties = {
     score: { type: Number },
-    status: { type: String }
+    status: { type: String },
+    highScore: { type: Number }
   };
 
   static styles = css`
@@ -48,16 +49,26 @@ export class SpaceInvadersGame extends LitElement {
 
     .hud {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: space-between;
       gap: var(--space-2, 8px);
       margin-top: var(--space-3, 12px);
       color: var(--color-text-muted, #a9a4ca);
       font-family: var(--font-family-mono, monospace);
-      font-size: 0.68rem;
+      font-size: 0.64rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hud span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .hud strong {
@@ -70,11 +81,14 @@ export class SpaceInvadersGame extends LitElement {
     super();
     this.score = 0;
     this.status = 'ready';
+    this.highScore = 0;
     this._width = 320;
     this._height = 240;
     this._playerX = 160;
     this._cooldown = 0;
     this._wave = 1;
+    this._canDrop = false;
+    this._isGameOver = false;
     this._direction = 1;
     this._bullets = [];
     this._invaders = [];
@@ -100,6 +114,8 @@ export class SpaceInvadersGame extends LitElement {
       <div
         class="game-shell"
         tabindex="0"
+        @pointerenter=${this._handlePointerEnter}
+        @pointerleave=${this._handlePointerLeave}
         @keydown=${this._handleKeyDown}
         @keyup=${this._handleKeyUp}
         @pointerdown=${this._handlePointerDown}
@@ -109,7 +125,7 @@ export class SpaceInvadersGame extends LitElement {
         <div class="hud" aria-live="polite">
           <span>score <strong>${this.score}</strong></span>
           <span>${this.status}</span>
-          <span>a/d + space</span>
+          <span>${this._isGameOver ? 'tap to restart' : 'a d / space'}</span>
         </div>
       </div>
     `;
@@ -124,13 +140,19 @@ export class SpaceInvadersGame extends LitElement {
     this._resizeObserver = new ResizeObserver(() => this._resize());
     this._resizeObserver.observe(this._canvas);
 
+    this.highScore = this._getHighScore();
+    this.status = 'hover to start';
+    this._startNewRun();
     this._lastTime = performance.now();
     this._frame = requestAnimationFrame(this._tick);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    cancelAnimationFrame(this._frame);
+    if (this._frame) {
+      cancelAnimationFrame(this._frame);
+      this._frame = 0;
+    }
     this._resizeObserver?.disconnect();
   }
 
@@ -160,6 +182,53 @@ export class SpaceInvadersGame extends LitElement {
     this._playerX = this._clamp(this._playerX || width / 2, 22, width - 22);
     this._seedStars();
     this._spawnWave();
+  }
+
+  _getHighScore() {
+    try {
+      const stored = window.localStorage.getItem('spaceInvadersHighScore');
+      const parsed = Number(stored);
+      return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+    } catch (_error) {
+      return 0;
+    }
+  }
+
+  _saveHighScore(value) {
+    try {
+      window.localStorage.setItem('spaceInvadersHighScore', String(value));
+    } catch (_error) {
+      // localStorage may be disabled in restricted contexts
+    }
+  }
+
+  _startNewRun() {
+    this._isGameOver = false;
+    this._canDrop = false;
+    this._cooldown = 0;
+    this._wave = 1;
+    this._direction = 1;
+    this._bullets = [];
+    this.score = 0;
+    this.status = 'hover to start';
+    this._playerX = this._clamp(this._width / 2, 22, this._width - 22);
+    this._spawnWave();
+  }
+
+  _endGame() {
+    this._isGameOver = true;
+    this._canDrop = false;
+    this._bullets = [];
+    this._keys.clear();
+
+    if (this.score > this.highScore) {
+      this.highScore = this.score;
+      this._saveHighScore(this.highScore);
+      this.status = 'game over | new high score';
+      return;
+    }
+
+    this.status = 'game over';
   }
 
   _seedStars() {
@@ -201,6 +270,10 @@ export class SpaceInvadersGame extends LitElement {
   }
 
   _update(delta) {
+    if (this._isGameOver) {
+      return;
+    }
+
     const playerSpeed = 210;
     const playerY = this._height - 32;
 
@@ -249,7 +322,7 @@ export class SpaceInvadersGame extends LitElement {
 
     for (const invader of alive) {
       invader.x += this._direction * speed * delta;
-      if (shouldDrop) {
+      if (shouldDrop && this._canDrop) {
         invader.y += 11;
       }
     }
@@ -267,10 +340,8 @@ export class SpaceInvadersGame extends LitElement {
     }
 
     if (alive.some((invader) => invader.y > playerY - 30)) {
-      this.status = 'reset';
-      this.score = Math.max(0, this.score - 20);
-      this._wave = Math.max(1, this._wave - 1);
-      this._spawnWave();
+      this._endGame();
+      return;
     }
   }
 
@@ -281,6 +352,35 @@ export class SpaceInvadersGame extends LitElement {
     this._drawInvaders(ctx);
     this._drawBullets(ctx);
     this._drawPlayer(ctx);
+    if (this._isGameOver) {
+      this._drawGameOver(ctx);
+    }
+  }
+
+  _drawGameOver(ctx) {
+    const isNewHighScore = this.score === this.highScore && this.score > 0;
+
+    ctx.save();
+    ctx.fillStyle = 'rgba(12, 4, 25, 0.86)';
+    ctx.fillRect(this._width * 0.05, this._height * 0.24, this._width * 0.9, this._height * 0.46);
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = this._colors.accent;
+    ctx.font = '700 34px monospace';
+    ctx.fillText('GAME OVER', this._width / 2, this._height * 0.43);
+
+    ctx.fillStyle = this._colors.text;
+    ctx.font = '600 15px monospace';
+    ctx.fillText(`Score: ${this.score}`, this._width / 2, this._height * 0.55);
+    ctx.fillText(`High Score: ${this.highScore}`, this._width / 2, this._height * 0.64);
+
+    if (isNewHighScore) {
+      ctx.fillStyle = this._colors.green;
+      ctx.font = '600 14px monospace';
+      ctx.fillText('NEW HIGH SCORE', this._width / 2, this._height * 0.72);
+    }
+
+    ctx.restore();
   }
 
   _drawBackdrop(ctx) {
@@ -369,8 +469,17 @@ export class SpaceInvadersGame extends LitElement {
   }
 
   _handleKeyDown(event) {
+    if (this._isGameOver && (event.key === ' ' || event.key === 'Spacebar')) {
+      this._startNewRun();
+      return;
+    }
+
     const control = this._keyToControl(event.key);
     if (!control) {
+      return;
+    }
+
+    if (this._isGameOver) {
       return;
     }
 
@@ -385,22 +494,54 @@ export class SpaceInvadersGame extends LitElement {
     }
 
     event.preventDefault();
+
+    if (this._isGameOver) {
+      return;
+    }
+
     this._keys.delete(control);
   }
 
   _handlePointerDown(event) {
+    if (this._isGameOver) {
+      this._startNewRun();
+    }
+
+    this._canDrop = true;
     event.currentTarget.focus({ preventScroll: true });
     event.currentTarget.setPointerCapture(event.pointerId);
     this._movePlayerToPointer(event);
-    this._shoot();
+
+    if (!this._isGameOver) {
+      this._shoot();
+    }
   }
 
-  _handlePointerMove(event) {
-    if (event.buttons !== 1) {
+  _handlePointerEnter() {
+    if (!this._isGameOver) {
+      this._canDrop = true;
+      this.status = `wave ${this._wave}`;
       return;
     }
 
+    this.status = 'game over';
+  }
+
+  _handlePointerLeave() {
+    if (this._isGameOver) {
+      return;
+    }
+
+    this._canDrop = false;
+    this.status = 'hover to start';
+  }
+
+  _handlePointerMove(event) {
     this._movePlayerToPointer(event);
+
+    if (event.buttons === 1) {
+      this._shoot();
+    }
   }
 
   _movePlayerToPointer(event) {
