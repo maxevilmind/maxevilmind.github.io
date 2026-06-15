@@ -1,4 +1,4 @@
-import{i as e,b as i}from"./vendor-DbZKYTSE.js";import"../index-BNI3S3eW.js";class s extends e{createRenderRoot(){return this}render(){return i`
+import{i as e,b as r}from"./vendor-DbZKYTSE.js";import"../index-DUaIh2hd.js";class i extends e{createRenderRoot(){return this}render(){return r`
       <div class="page-stack">
         <section class="panel">
           <div class="panel-content section-stack">
@@ -10,34 +10,48 @@ import{i as e,b as i}from"./vendor-DbZKYTSE.js";import"../index-BNI3S3eW.js";cla
           </div>
         </section>
 
-        <section class="grid dashboard-grid">
+        <section class="grid grid-3">
           ${this._renderCurrentRole()}
+          ${this._renderPastRole()}
           ${this._renderTechnicalStack()}
         </section>
 
         <section class="grid grid-3">
           ${this._renderPrinciple("01","Calm Complexity","Turn messy systems into understandable flows, components, and platform boundaries.")}
           ${this._renderPrinciple("02","Visible Quality","Use spacing, typography, feedback, and motion to make quality immediately visible.")}
-          ${this._renderPrinciple("03","Pragmatic Delivery","Prefer small, correct changes and systems that teams can actually maintain.")}
+          ${this._renderPrinciple("03","Pragmatic","Prefer small, correct changes and systems that teams can actually maintain.")}
         </section>
 
         ${this._renderContributions()}
       </div>
-    `}_renderCurrentRole(){return i`
-      <custom-card title="Current Role" subtitle="ABN AMRO / staff engineer" icon="ABN" variant="primary" hoverable>
+    `}_renderCurrentRole(){return this._renderRoleCard("Current Role","ABN AMRO / staff engineer (Current)","ABN","primary",r`
         <div class="section-stack">
           <p>
-            I work on frontend platform and UI engineering for banking services. The work spans shared architecture, reusable UI, developer experience, and cross-team decision making.
+            I work in core transactions grid currently focusing on DX and initiatives to make devs more productive.
+          </p>
+          <ul class="list">
+            <li>Here will be the list of core points I worked on.</li>
+          </ul>
+        </div>
+      `)}_renderPastRole(){return this._renderRoleCard("Past Role","ING / senior frontend engineer (Feb 2019 - May 2026)","ING","secondary",r`
+        <div class="section-stack">
+          <p>
+            I worked on frontend platform and UI engineering for banking services. The work spans shared architecture, component libraries, developer tooling, microfrontend shell hosting numerous applications, developer experience, and cross-team decision making.
           </p>
           <ul class="list">
             <li>Cross-team collaboration and technical leadership</li>
             <li>Mentoring, reviews, and knowledge sharing</li>
             <li>Design system and web component quality</li>
-            <li>Platform evolution with performance in mind</li>
+            <li>Built mature frontend platform</li>
+            <li>Microfrontends</li>
+            <li>Component libraries</li>
           </ul>
         </div>
+      `)}_renderRoleCard(e,i,n,s,t){return r`
+      <custom-card title=${e} subtitle=${i} icon=${n} variant=${s} hoverable>
+        ${t}
       </custom-card>
-    `}_renderTechnicalStack(){return i`
+    `}_renderTechnicalStack(){return r`
       <custom-card title="Technical Stack" subtitle="frontend-heavy, system-aware" icon="TS" variant="accent" hoverable>
         <div class="skill-list">
           ${this._renderSkill("JavaScript / TypeScript","96%")}
@@ -47,19 +61,19 @@ import{i as e,b as i}from"./vendor-DbZKYTSE.js";import"../index-BNI3S3eW.js";cla
           ${this._renderSkill("Hardware / IoT","68%")}
         </div>
       </custom-card>
-    `}_renderSkill(e,s){return i`
+    `}_renderSkill(e,i){return r`
       <div class="skill-row">
         <div class="skill-label">
           <span>${e}</span>
-          <span>${s}</span>
+          <span>${i}</span>
         </div>
-        <div class="progress-track"><span class="progress-fill" style="--value: ${s};"></span></div>
+        <div class="progress-track"><span class="progress-fill" style="--value: ${i};"></span></div>
       </div>
-    `}_renderPrinciple(e,s,r){return i`
-      <custom-card title=${s} subtitle="working principle" icon=${e} variant="secondary" hoverable>
-        <p>${r}</p>
+    `}_renderPrinciple(e,i,n){return r`
+      <custom-card title=${i} subtitle="working principle" icon=${e} variant="secondary" hoverable>
+        <p>${n}</p>
       </custom-card>
-    `}_renderContributions(){return i`
+    `}_renderContributions(){return r`
       <section class="panel panel-compact">
         <div class="panel-content">
           <div class="panel-header">
@@ -74,4 +88,4 @@ import{i as e,b as i}from"./vendor-DbZKYTSE.js";import"../index-BNI3S3eW.js";cla
           </p>
         </div>
       </section>
-    `}}customElements.define("about-page",s);export{s as AboutPage};
+    `}}customElements.define("about-page",i);export{i as AboutPage};
