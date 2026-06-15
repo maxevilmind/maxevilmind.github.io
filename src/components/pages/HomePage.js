@@ -52,7 +52,7 @@ export class HomePage extends LitElement {
                 <div class="progress-track"><span class="progress-fill" style="--value: 84%;"></span></div>
                 <div class="progress-meta">
                   <span>portfolio redesign</span>
-                  <span>84% signal strength</span>
+                  <span>84% done</span>
                 </div>
               </div>
             </div>

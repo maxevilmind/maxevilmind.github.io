@@ -50,6 +50,10 @@ export class ProjectsPage extends LitElement {
   }
 
   _renderProject(project) {
+    if (project.telemetry) {
+      return this._renderPortfolioTelemetry(project);
+    }
+
     return html`
       <custom-card
         class="project-card-shell"
@@ -74,6 +78,113 @@ export class ProjectsPage extends LitElement {
           ` : ''}
         </div>
       </custom-card>
+    `;
+  }
+
+  _renderPortfolioTelemetry(project) {
+    return html`
+      <custom-card
+        class="project-card-shell portfolio-telemetry-shell"
+        title=${project.title}
+        subtitle=${project.subtitle}
+        icon=${project.code}
+        variant=${project.variant}
+        hoverable
+        clickable>
+        <div class="portfolio-telemetry">
+          <div class="telemetry-copy">
+            <p class="telemetry-kicker">lighthouse capture / 2026-06-15</p>
+            <p>${project.description}</p>
+            <div class="badge-list">
+              ${project.tags.map(tag => html`<span class="badge">${tag}</span>`)}
+            </div>
+            <div>
+              <a href=${project.link} target="_blank" rel="noopener noreferrer" class="link-inline">View Repository -&gt;</a>
+            </div>
+          </div>
+
+          <div class="telemetry-dashboard" aria-label="Portfolio performance telemetry">
+            <div class="telemetry-score-ring" role="img" aria-label="Five perfect Lighthouse audit scores">
+              <span class="score-ring-core">100</span>
+              <span class="score-ring-label">audit score</span>
+            </div>
+
+            <div class="telemetry-metric-grid">
+              ${this._renderTelemetryMetric('FCP', '0.3s', 'first paint')}
+              ${this._renderTelemetryMetric('LCP', '0.3s', 'largest paint')}
+              ${this._renderTelemetryMetric('TBT', '0ms', 'blocked main thread')}
+              ${this._renderTelemetryMetric('CLS', '0', 'layout shift')}
+            </div>
+
+            <div class="telemetry-diagram" role="img" aria-label="Request pipeline with four network requests and seventeen kilobytes transferred">
+              ${this._renderFlowNode('HTML', '603B')}
+              ${this._renderFlowNode('CSS', '4.4KB')}
+              ${this._renderFlowNode('APP', '5.8KB')}
+              ${this._renderFlowNode('VENDOR', '6.1KB')}
+            </div>
+
+            <div class="telemetry-chart-panel">
+              <div class="telemetry-chart-heading">
+                <span>resource envelope</span>
+                <strong>16.9KB / 4 requests</strong>
+              </div>
+              <div class="resource-bars">
+                ${this._renderResourceBar('Script', '70%', '11.9KB')}
+                ${this._renderResourceBar('CSS', '26%', '4.4KB')}
+                ${this._renderResourceBar('HTML', '4%', '603B')}
+              </div>
+            </div>
+
+            <div class="telemetry-chart-panel">
+              <div class="telemetry-chart-heading">
+                <span>main-thread profile</span>
+                <strong>94ms total</strong>
+              </div>
+              <div class="thread-bars">
+                ${this._renderThreadBar('layout', '49%')}
+                ${this._renderThreadBar('other', '38%')}
+                ${this._renderThreadBar('script', '9%')}
+                ${this._renderThreadBar('html/css', '2%')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </custom-card>
+    `;
+  }
+
+  _renderTelemetryMetric(label, value, detail) {
+    return html`
+      <div class="telemetry-metric">
+        <span>${label}</span>
+        <strong>${value}</strong>
+        <small>${detail}</small>
+      </div>
+    `;
+  }
+
+  _renderFlowNode(label, value) {
+    return html`
+      <span class="flow-node">
+        <strong>${label}</strong>
+        <small>${value}</small>
+      </span>
+    `;
+  }
+
+  _renderResourceBar(label, value, detail) {
+    return html`
+      <div class="resource-row">
+        <span>${label}</span>
+        <div class="resource-track"><span style="--value: ${value};"></span></div>
+        <strong>${detail}</strong>
+      </div>
+    `;
+  }
+
+  _renderThreadBar(label, value) {
+    return html`
+      <span class="thread-bar" style="--value: ${value};" data-label=${label}></span>
     `;
   }
 
@@ -131,14 +242,12 @@ export class ProjectsPage extends LitElement {
       {
         code: 'PF',
         title: 'This Portfolio',
-        subtitle: 'Retro-futurist UI build',
-        image: 'assets/stats.png',
-        imageWidth: 733,
-        imageHeight: 612,
-        description: 'A lightweight web-components portfolio redesigned as a neon dashboard. It focuses on fast loading, responsive composition, and clean visual systems without a heavy framework.',
-        tags: ['Lit', 'CSS Tokens', 'Responsive UI', 'Rollup'],
+        subtitle: 'Live performance telemetry card',
+        description: 'A lightweight Lit and Rollup portfolio instrumented like an interface console: tiny request surface, near-instant paint, zero blocking, and no layout drift while still carrying a custom visual system.',
+        tags: ['Lit', 'CSS Tokens', '0ms TBT', '16.9KB Transfer', '4 Requests'],
         link: 'https://github.com/maxevilmind/maxevilmind.github.io',
-        variant: 'accent'
+        variant: 'accent',
+        telemetry: true
       }
     ];
   }
