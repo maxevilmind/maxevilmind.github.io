@@ -34,7 +34,16 @@ export class HomePage extends LitElement {
               <p class="eyebrow">senior frontend engineer</p>
               <h1 class="hero-title">Clean <span class="accent">Future</span> UI</h1>
               <p class="hero-text">
-                I build resilient web platforms, design systems, and polished interfaces with a practical engineering mindset and focus on best DX and UX.
+                I build and evolve large-scale web architectures - microfrontends, design systems, internal tooling, and cross-team platform standards.
+                Facilitated migrations of dozens of applications, improved developer experience across teams by providing a fontend platform for microfrontends, driving adoption of improved monitoring,
+                best practices for testing and AI workflows adoption.
+              </p>
+              <p class="hero-text">
+                I enjoy operating at the intersection of architecture, scalability, and developer productivity, turning fragmented frontend into maintainable, scalable systems.
+                Strong JavaScript foundation. Experience across Web Components, and Node.js, native browser stack and latest JavaScript standards. I care less about frameworks and more about building durable systems.
+              </p>
+              <p class="hero-text">
+                Outside of work, I enjoy experimenting with embedded systems like ESP32, Arduino, Raspberry Pi, IOTs, Smart Home, music production, AI, running and many other things.
               </p>
               <div class="button-row">
                 ${this._renderSocialButton('https://github.com/maxevilmind', 'View GitHub', 'secondary')}
@@ -117,6 +126,7 @@ export class HomePage extends LitElement {
             ${this._renderSkill('Web Components', '92%')}
             ${this._renderSkill('Design Systems', '88%')}
             ${this._renderSkill('Mentoring', '90%')}
+            ${this._renderSkill('Microfrontends', '91%')}
           </div>
         </custom-card>
 
