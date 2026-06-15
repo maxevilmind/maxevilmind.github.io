@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import '../ui/CustomCard.js';
 import '../ui/AppButton.js';
 
@@ -69,7 +69,7 @@ export class HomePage extends LitElement {
               <span class="panel-code">v8+</span>
             </div>
             <div class="signal-orb" aria-hidden="true"></div>
-            <div class="terminal-lines">
+            <div class="mt-20 terminal-lines">
               <span class="terminal-line">location: Amsterdam area</span>
               <span class="terminal-line">role: staff engineer at ABN AMRO</span>
               <span class="terminal-line">focus: UI platforms, components, IoT</span>

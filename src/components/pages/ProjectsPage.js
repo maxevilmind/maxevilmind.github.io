@@ -38,10 +38,10 @@ export class ProjectsPage extends LitElement {
 
           <custom-card title="Build Principles" subtitle="how I prefer to ship" icon="BP" variant="accent" hoverable>
             <ul class="list">
+              <li>Prioritize clean, maintainable architecture and the best possible developer experience.</li>
               <li>Use strong defaults before inventing abstractions.</li>
               <li>Make state, loading, and failure visible in the interface.</li>
               <li>Keep components small, composable, and readable.</li>
-              <li>Care about visual hierarchy as much as implementation detail.</li>
             </ul>
           </custom-card>
         </section>

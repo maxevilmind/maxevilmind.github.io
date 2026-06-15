@@ -62,7 +62,7 @@ export class AboutPage extends LitElement {
         <div class="skill-list">
           ${this._renderSkill('JavaScript / TypeScript', '96%')}
           ${this._renderSkill('Lit / Web Components', '92%')}
-          ${this._renderSkill('React Ecosystem', '84%')}
+          ${this._renderSkill('Vue Ecosystem', '84%')}
           ${this._renderSkill('Node.js / APIs', '76%')}
           ${this._renderSkill('Hardware / IoT', '68%')}
         </div>
