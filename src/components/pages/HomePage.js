@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import '../ui/CustomCard.js';
 import '../ui/AppButton.js';
+import '../ui/SpaceInvadersGame.js';
 
 /**
  * Home page component displaying introductory information
@@ -73,16 +74,17 @@ export class HomePage extends LitElement {
             <div class="panel-header">
               <div>
                 <p class="eyebrow">operator</p>
-              <h2 class="panel-title">Maksim Larionov</h2>
+                <h2 class="panel-title">Maksim Larionov</h2>
               </div>
               <span class="panel-code">v8+</span>
             </div>
             <div class="signal-orb" aria-hidden="true"></div>
-            <div class="mt-20 terminal-lines">
+            <div class="mt-20 mb-20 terminal-lines">
               <span class="terminal-line">location: Amsterdam area</span>
               <span class="terminal-line">role: staff engineer at ABN AMRO</span>
               <span class="terminal-line">focus: UI platforms, components, IoT</span>
             </div>
+            <space-invaders-game></space-invaders-game>
           </div>
         </aside>
       </section>
