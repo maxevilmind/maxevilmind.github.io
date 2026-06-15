@@ -1,4 +1,4 @@
-import{i as t,x as n,a as r,E as s,T as a}from"./chunks/vendor-8fc737ca.js";import"./chunks/pages-fd734507.js";const o={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact",BLOG:"blog"},c=o.HOME;class PortfolioApp extends t{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean}};constructor(){super(),this.currentPage=c,this.isMenuOpen=!1,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const t=window.location.hash.substring(1);t&&Object.values(o).includes(t)||t.startsWith(`${o.BLOG}/`)?this.currentPage=t:t||""!==window.location.hash||(this.currentPage=c)}_navigateTo(t){window.location.hash=t}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return n`
+import{i as t,x as n,a as r,E as s,T as a}from"./chunks/vendor-8fc737ca.js";import"./chunks/pages-b1ec78da.js";const o={HOME:"home",PROJECTS:"projects",ABOUT:"about",CONTACT:"contact",BLOG:"blog"},c=o.HOME;class PortfolioApp extends t{static properties={currentPage:{type:String},isMenuOpen:{type:Boolean}};constructor(){super(),this.currentPage=c,this.isMenuOpen=!1,this._setupRouting()}_setupRouting(){this._handleHashChange(),window.addEventListener("hashchange",(()=>this._handleHashChange()))}_handleHashChange(){const t=window.location.hash.substring(1);t&&Object.values(o).includes(t)||t.startsWith(`${o.BLOG}/`)?this.currentPage=t:t||""!==window.location.hash||(this.currentPage=c)}_navigateTo(t){window.location.hash=t}createRenderRoot(){return this}_toggleMenu(){this.isMenuOpen=!this.isMenuOpen}_closeMenu(){this.isMenuOpen=!1}render(){return n`
       <div class="app-shell">
         ${this._renderHeader()}
         <main class="page-main container">
@@ -304,4 +304,4 @@ const{entries:Ne,setPrototypeOf:Le,isFrozen:Ie,getPrototypeOf:Me,getOwnPropertyD
         </section>
       </article>
     `}}customElements.define("blog-post-page",BlogPostPage);
-//# sourceMappingURL=index-333f8731.js.map
+//# sourceMappingURL=index-ed7c3b9c.js.map

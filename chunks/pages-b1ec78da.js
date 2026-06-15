@@ -298,7 +298,7 @@ import{i as e,a as t,x as a}from"./vendor-8fc737ca.js";class AppButton extends e
               <span class="panel-code">v8+</span>
             </div>
             <div class="signal-orb" aria-hidden="true"></div>
-            <div class="terminal-lines">
+            <div class="mt-20 terminal-lines">
               <span class="terminal-line">location: Amsterdam area</span>
               <span class="terminal-line">role: staff engineer at ABN AMRO</span>
               <span class="terminal-line">focus: UI platforms, components, IoT</span>
@@ -385,10 +385,10 @@ import{i as e,a as t,x as a}from"./vendor-8fc737ca.js";class AppButton extends e
 
           <custom-card title="Build Principles" subtitle="how I prefer to ship" icon="BP" variant="accent" hoverable>
             <ul class="list">
+              <li>Prioritize clean, maintainable architecture and the best possible developer experience.</li>
               <li>Use strong defaults before inventing abstractions.</li>
               <li>Make state, loading, and failure visible in the interface.</li>
               <li>Keep components small, composable, and readable.</li>
-              <li>Care about visual hierarchy as much as implementation detail.</li>
             </ul>
           </custom-card>
         </section>
@@ -470,7 +470,7 @@ import{i as e,a as t,x as a}from"./vendor-8fc737ca.js";class AppButton extends e
         <div class="skill-list">
           ${this._renderSkill("JavaScript / TypeScript","96%")}
           ${this._renderSkill("Lit / Web Components","92%")}
-          ${this._renderSkill("React Ecosystem","84%")}
+          ${this._renderSkill("Vue Ecosystem","84%")}
           ${this._renderSkill("Node.js / APIs","76%")}
           ${this._renderSkill("Hardware / IoT","68%")}
         </div>
@@ -559,4 +559,4 @@ import{i as e,a as t,x as a}from"./vendor-8fc737ca.js";class AppButton extends e
         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
       </svg>
     `}});
-//# sourceMappingURL=pages-fd734507.js.map
+//# sourceMappingURL=pages-b1ec78da.js.map
