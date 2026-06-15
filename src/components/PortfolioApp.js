@@ -2,6 +2,15 @@ import { LitElement, html } from 'lit';
 import { ROUTES, DEFAULT_ROUTE } from '../utils/routes.js';
 import './ui/AppButton.js';
 
+const PAGE_LOADERS = {
+  [ROUTES.HOME]: () => import('./pages/HomePage.js'),
+  [ROUTES.PROJECTS]: () => import('./pages/ProjectsPage.js'),
+  [ROUTES.BLOG]: () => import('./pages/BlogPage.js'),
+  [ROUTES.ABOUT]: () => import('./pages/AboutPage.js'),
+  [ROUTES.CONTACT]: () => import('./pages/ContactPage.js'),
+  blogPost: () => import('./pages/BlogPostPage.js')
+};
+
 /**
  * Main application component that handles routing and layout
  * 
@@ -11,13 +20,19 @@ import './ui/AppButton.js';
 export class PortfolioApp extends LitElement {
   static properties = {
     currentPage: { type: String },
-    isMenuOpen: { type: Boolean }
+    isMenuOpen: { type: Boolean },
+    isPageLoading: { type: Boolean },
+    pageLoadError: { type: String }
   };
 
   constructor() {
     super();
     this.currentPage = DEFAULT_ROUTE;
     this.isMenuOpen = false;
+    this.isPageLoading = false;
+    this.pageLoadError = '';
+    this._loadedPages = new Set([ROUTES.HOME]);
+    this._routeLoadToken = 0;
     this._setupRouting();
   }
 
@@ -48,6 +63,48 @@ export class PortfolioApp extends LitElement {
     } else if (!hash && window.location.hash === '') {
       // If no hash, set to default route
       this.currentPage = DEFAULT_ROUTE;
+    }
+
+    this._loadCurrentPage();
+  }
+
+  _getPageKey(page = this.currentPage) {
+    return page.startsWith(`${ROUTES.BLOG}/`) ? 'blogPost' : page;
+  }
+
+  async _loadCurrentPage() {
+    const pageKey = this._getPageKey();
+    const loadPage = PAGE_LOADERS[pageKey] || PAGE_LOADERS[DEFAULT_ROUTE];
+
+    if (this._loadedPages.has(pageKey)) {
+      this.isPageLoading = false;
+      this.pageLoadError = '';
+      return;
+    }
+
+    const routeLoadToken = ++this._routeLoadToken;
+    this.isPageLoading = true;
+    this.pageLoadError = '';
+
+    try {
+      await loadPage();
+      this._loadedPages.add(pageKey);
+    } catch (error) {
+      this.pageLoadError = 'Could not load this page.';
+    } finally {
+      if (routeLoadToken === this._routeLoadToken) {
+        this.isPageLoading = false;
+      }
+    }
+  }
+
+  _prefetchRoute(route) {
+    const pageKey = this._getPageKey(route);
+
+    if (!this._loadedPages.has(pageKey)) {
+      PAGE_LOADERS[pageKey]?.()
+        .then(() => this._loadedPages.add(pageKey))
+        .catch(() => {});
     }
   }
 
@@ -172,7 +229,11 @@ export class PortfolioApp extends LitElement {
     const variant = isActive ? 'primary' : 'secondary';
     
     return html`
-      <app-button variant="${variant}" @click=${() => this._navigateTo(route)}>
+      <app-button
+        variant="${variant}"
+        @pointerenter=${() => this._prefetchRoute(route)}
+        @focusin=${() => this._prefetchRoute(route)}
+        @click=${() => this._navigateTo(route)}>
         ${label}
       </app-button>
     `;
@@ -186,6 +247,8 @@ export class PortfolioApp extends LitElement {
       <app-button
         variant="${variant}"
         full-width
+        @pointerenter=${() => this._prefetchRoute(route)}
+        @focusin=${() => this._prefetchRoute(route)}
         @click=${() => {
           this._navigateTo(route);
           this._closeMenu();
@@ -196,6 +259,28 @@ export class PortfolioApp extends LitElement {
   }
 
   _renderPage() {
+    if (this.isPageLoading) {
+      return html`
+        <section class="panel panel-compact">
+          <div class="panel-content section-stack">
+            <p class="eyebrow">loading route</p>
+            <p>Opening transmission...</p>
+          </div>
+        </section>
+      `;
+    }
+
+    if (this.pageLoadError) {
+      return html`
+        <section class="panel panel-compact">
+          <div class="panel-content section-stack">
+            <p class="eyebrow">route unavailable</p>
+            <p>${this.pageLoadError}</p>
+          </div>
+        </section>
+      `;
+    }
+
     switch (this.currentPage) {
       case ROUTES.HOME:
         return html`<home-page></home-page>`;

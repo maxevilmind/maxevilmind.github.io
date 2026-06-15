@@ -1,9 +1,20 @@
 import { LitElement, html } from 'lit';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { marked } from 'marked';
-import DOMPurify from 'dompurify';
 import { getBlogPost } from '../../utils/blog.js';
 import '../ui/AppButton.js';
+
+let markdownRendererPromise;
+
+const loadMarkdownRenderer = () => {
+  if (!markdownRendererPromise) {
+    markdownRendererPromise = Promise.all([
+      import('marked'),
+      import('dompurify')
+    ]).then(([{ marked }, { default: DOMPurify }]) => ({ marked, DOMPurify }));
+  }
+
+  return markdownRendererPromise;
+};
 
 export class BlogPostPage extends LitElement {
   static properties = {
@@ -21,6 +32,7 @@ export class BlogPostPage extends LitElement {
     this.errorMessage = '';
     this._lastLoadedSlug = '';
     this._renderedMarkdown = '';
+    this._loadToken = 0;
   }
 
   createRenderRoot() {
@@ -45,18 +57,34 @@ export class BlogPostPage extends LitElement {
 
     this.isLoading = true;
     this.errorMessage = '';
+    const loadToken = ++this._loadToken;
 
     try {
-      this.post = await getBlogPost(this.slug);
-      const renderedHtml = marked.parse(this.post.markdown || '');
+      const [post, { marked, DOMPurify }] = await Promise.all([
+        getBlogPost(this.slug),
+        loadMarkdownRenderer()
+      ]);
+
+      if (loadToken !== this._loadToken) {
+        return;
+      }
+
+      this.post = post;
+      const renderedHtml = marked.parse(post.markdown || '');
       this._renderedMarkdown = DOMPurify.sanitize(renderedHtml);
       this._lastLoadedSlug = this.slug;
     } catch (error) {
+      if (loadToken !== this._loadToken) {
+        return;
+      }
+
       this.post = null;
       this._renderedMarkdown = '';
       this.errorMessage = 'Could not load this blog post.';
     } finally {
-      this.isLoading = false;
+      if (loadToken === this._loadToken) {
+        this.isLoading = false;
+      }
     }
   }
 
@@ -100,7 +128,7 @@ export class BlogPostPage extends LitElement {
             <h1 class="article-title">${this.post.title}</h1>
           </div>
         </section>
-        ${this.post.image ? html`<img class="article-image" src="${this.post.image}" alt="${this.post.title}" />` : ''}
+        ${this.post.image ? html`<img class="article-image" src="${this.post.image}" alt="${this.post.title}" loading="eager" fetchpriority="high" />` : ''}
         <section class="panel panel-compact">
           <div class="panel-content article-content">${unsafeHTML(this._renderedMarkdown)}</div>
         </section>

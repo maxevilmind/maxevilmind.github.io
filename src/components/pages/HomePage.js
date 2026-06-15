@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
 import '../ui/CustomCard.js';
 import '../ui/AppButton.js';
 
@@ -125,7 +125,7 @@ export class HomePage extends LitElement {
             <p>
               I like interfaces that make status visible without visual noise: clear contrast, rhythm, alignment, and just enough glow to make the UI feel alive.
             </p>
-            <div class="bar-chart" aria-label="Interface telemetry chart">
+            <div class="bar-chart" role="img" aria-label="Interface telemetry chart">
               <span class="chart-bar" style="--value: 38%;" data-label="speed"></span>
               <span class="chart-bar" style="--value: 52%;" data-label="clarity"></span>
               <span class="chart-bar" style="--value: 46%;" data-label="motion"></span>

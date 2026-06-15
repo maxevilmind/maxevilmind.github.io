@@ -61,7 +61,7 @@ export class ProjectsPage extends LitElement {
         clickable>
         <div class="project-card-content">
           ${project.image ? html`
-            <img class="project-image" src=${project.image} alt=${project.title} loading="lazy" />
+            <img class="project-image" src=${project.image} alt=${project.title} width=${project.imageWidth} height=${project.imageHeight} loading="lazy" />
           ` : ''}
           <p>${project.description}</p>
           <div class="badge-list">
@@ -133,6 +133,8 @@ export class ProjectsPage extends LitElement {
         title: 'This Portfolio',
         subtitle: 'Retro-futurist UI build',
         image: 'assets/stats.png',
+        imageWidth: 733,
+        imageHeight: 612,
         description: 'A lightweight web-components portfolio redesigned as a neon dashboard. It focuses on fast loading, responsive composition, and clean visual systems without a heavy framework.',
         tags: ['Lit', 'CSS Tokens', 'Responsive UI', 'Rollup'],
         link: 'https://github.com/maxevilmind/maxevilmind.github.io',
